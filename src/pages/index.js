@@ -11,21 +11,30 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      <script>
-        fetch('http://res.cloudinary.com/dymvtkv1m/video/upload/vc_auto/v1/samples/elephants.webm')
-      </script>
-      {videos.map(({ node }, index) => (
-        <Video
-          crossOrigin="anonymous"
-          cloudName="dymvtkv1m"
-          publicId={node.public_id}
-          key={index}
-          controls="true"
-        >
-          <Transformation videoCodec="auto" />
-        </Video>
-      ))}
+      {videos.map(({ node }, index) => {
+        const htmlVideoRef = React.createRef()
+
+        const video = (
+          <Video
+            width="300"
+            crossOrigin="anonymous"
+            cloudName="dymvtkv1m"
+            publicId={node.public_id}
+            controls={true}
+            innerRef={htmlVideoRef}
+          >
+            <Transformation videoCodec="auto" />
+          </Video>
+        )
+        return (
+          <div key={index}>
+            {video}
+            <button onClick={() => fetch(htmlVideoRef.current.currentSrc)}>
+              Download
+            </button>
+          </div>
+        )
+      })}
       <Link to="/page-2/">Go to page 2</Link>
     </Layout>
   )

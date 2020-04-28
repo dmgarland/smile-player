@@ -3,9 +3,12 @@ import { Link, graphql } from "gatsby"
 import { Video, Transformation } from "cloudinary-react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import useCache from "../hooks/cache"
 
 const IndexPage = ({ data }) => {
   const videos = data.allCloudinaryMedia.edges
+  const cached = useCache()
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -26,11 +29,19 @@ const IndexPage = ({ data }) => {
             <Transformation videoCodec="auto" />
           </Video>
         )
+        const downloaded = cached.find(result =>
+          result.match(new RegExp(node.public_id))
+        )
+        const label = downloaded ? "Already Downloaded" : "Download"
+
         return (
           <div key={index}>
             {video}
-            <button onClick={() => fetch(htmlVideoRef.current.currentSrc)}>
-              Download
+            <button
+              onClick={() => fetch(htmlVideoRef.current.currentSrc)}
+              disabled={downloaded}
+            >
+              {label}
             </button>
           </div>
         )

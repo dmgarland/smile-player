@@ -12,9 +12,12 @@ const IndexPage = ({ data }) => {
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
       <p>Now go build something great.</p>
+      <script>
+        fetch('http://res.cloudinary.com/dymvtkv1m/video/upload/vc_auto/v1/samples/elephants.webm')
+      </script>
       {videos.map(({ node }, index) => (
         <Video
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
           cloudName="dymvtkv1m"
           publicId={node.public_id}
           key={index}

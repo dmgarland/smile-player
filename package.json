@@ -15,10 +15,12 @@
     "gatsby-source-cloudinary": "^0.1.13",
     "gatsby-source-filesystem": "^2.2.5",
     "gatsby-transformer-sharp": "^2.4.7",
+    "gestalt": "^1.46.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.0.0",
+    "typeface-raleway": "^0.0.75",
     "workbox-range-requests": "^5.1.3"
   },
   "devDependencies": {

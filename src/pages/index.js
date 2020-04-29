@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { Heading } from "gestalt"
 import { Video, Transformation } from "cloudinary-react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -12,8 +13,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
+      <Heading accessibilityLevel="2">Media Library</Heading>
       {videos.map(({ node }, index) => {
         const htmlVideoRef = React.createRef()
 

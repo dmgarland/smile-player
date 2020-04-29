@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Smiling Remotely`,
+    description: `The Smiling Remotely Weekly Singalong Sessions App provides a mobile video experience that puts a smile on your face`,
+    author: `Dan Garland`,
   },
   plugins: [
     {

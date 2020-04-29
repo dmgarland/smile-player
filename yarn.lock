@@ -3099,6 +3099,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+
 clean-stack@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
@@ -6041,6 +6046,14 @@ gensync@^1.0.0-beta.1:
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.1.tgz#58f4361ff987e5ff6e1e7a210827aa371eaac269"
   integrity sha512-r8EC6NO1sngH/zdD9fiRDLdcgnbayXah+mLgManTaIZJqEC1MZstmnox8KpnI2/fxQwrp5OpCOYWLp4rBl4Jcg==
+
+gestalt@^1.46.1:
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/gestalt/-/gestalt-1.46.1.tgz#be87e2e0b61bc10527a11b61e3b8ee5640d59ade"
+  integrity sha512-fDEfYZwjhgDru7xO5VQ96ILC1YMavUm+6nJJ5uoHw7NTFBSgVh0U7sHe0pk7EUm2ko+Af7GVQH4WFdYRhKafzw==
+  dependencies:
+    classnames "^2.2.6"
+    prop-types "^15.7.2"
 
 get-caller-file@^1.0.1:
   version "1.0.3"
@@ -12625,6 +12638,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typeface-raleway@^0.0.75:
+  version "0.0.75"
+  resolved "https://registry.yarnpkg.com/typeface-raleway/-/typeface-raleway-0.0.75.tgz#cc79688aa3175452744ecd19540b54dad153e8f3"
+  integrity sha512-mUvT/klCTGA2HporaIMNY3ap45YxBErxFv/1pv82LhbFdNc3m+6ddfoexP6xxwMZ5yZ2VmDhMqk1yikDEoxU/Q==
 
 unbzip2-stream@^1.0.9:
   version "1.4.2"

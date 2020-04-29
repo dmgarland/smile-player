@@ -13,20 +13,21 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Heading accessibilityLevel="2">Media Library</Heading>
+      <Heading accessibilityLevel={2}>Media Library</Heading>
       {videos.map(({ node }, index) => {
         const htmlVideoRef = React.createRef()
 
         const video = (
           <Video
-            width="300"
             crossOrigin="anonymous"
             cloudName="dymvtkv1m"
             publicId={node.public_id}
             controls={true}
             innerRef={htmlVideoRef}
+            preload="metadata"
+            width="400"
           >
-            <Transformation videoCodec="auto" />
+            <Transformation width="400" height="300" gravity="center" />
           </Video>
         )
         const downloaded = cached.find(result =>

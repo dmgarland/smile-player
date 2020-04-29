@@ -6,7 +6,7 @@ import { Box, Heading } from "gestalt"
 const Header = ({ siteTitle }) => (
   <header>
     <Box color="darkGray">
-      <Heading align="left" accessibilityLevel="1">
+      <Heading align="left" accessibilityLevel={1}>
         <Link
           to="/"
           style={{

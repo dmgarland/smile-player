@@ -19,12 +19,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-offline",
-      options: {
-        appendScript: require.resolve(`./src/custom-sw-code.js`),
-      },
-    },
-    {
       resolve: "gatsby-plugin-manifest",
       options: {
         name: "Smile Player",
@@ -34,6 +28,12 @@ module.exports = {
         theme_color: "#6b37bf",
         display: "standalone",
         icon: "src/images/gatsby-icon.png",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-offline",
+      options: {
+        appendScript: require.resolve(`./src/custom-sw-code.js`),
       },
     },
     `gatsby-plugin-react-helmet`,

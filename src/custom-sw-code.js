@@ -1,5 +1,5 @@
 workbox.routing.registerRoute(
-  /^https:\/\/res.cloudinary.com\/.*(.webm|.mov|.mp4)$/,
+  /^https?:\/\/res.cloudinary.com\/.*(.webm|.mov|.mp4)$/,
   new workbox.strategies.CacheFirst({
     cacheName: "video-cache",
     plugins: [

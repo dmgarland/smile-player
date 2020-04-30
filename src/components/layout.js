@@ -26,11 +26,14 @@ const Layout = ({ children }) => {
           <main>{children}</main>
         </Box>
         <footer>
-          <Text>
-            Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </Text>
+          <Box padding={3}>
+            <Text>
+              Brought to you by{" "}
+              <a href="http://www.shapeshifter-productions.com">
+                Shapeshifter Productions Ltd.
+              </a>
+            </Text>
+          </Box>
         </footer>
       </Container>
     </div>

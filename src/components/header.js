@@ -24,7 +24,7 @@ const Header = ({ siteTitle }) => (
           <Image path="sunshine.jpg" />
         </Box>
         <Box>
-          <Heading align="center" accessibilityLevel={1}>
+          <Heading align="center" accessibilityLevel={1} color="orange">
             {siteTitle}
           </Heading>
         </Box>

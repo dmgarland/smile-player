@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { Heading } from "gestalt"
+import { Heading, Button, Box, Text, IconButton } from "gestalt"
 import { Video, Transformation } from "cloudinary-react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -13,7 +13,9 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Heading accessibilityLevel={2}>Media Library</Heading>
+      <Heading accessibilityLevel={2} paddingY={2} size="sm">
+        Available Songs
+      </Heading>
       {videos.map(({ node }, index) => {
         const htmlVideoRef = React.createRef()
 
@@ -22,10 +24,9 @@ const IndexPage = ({ data }) => {
             crossOrigin="anonymous"
             cloudName="dymvtkv1m"
             publicId={node.public_id}
-            controls={true}
             innerRef={htmlVideoRef}
             preload="metadata"
-            width="400"
+            width="100%"
           >
             <Transformation width="400" height="300" gravity="center" />
           </Video>
@@ -33,21 +34,46 @@ const IndexPage = ({ data }) => {
         const downloaded = cached.find(result =>
           result.match(new RegExp(node.public_id))
         )
-        const label = downloaded ? "Already Downloaded" : "Download"
+        const label = downloaded ? "Saved" : "Download"
 
         return (
-          <div key={index}>
-            {video}
-            <button
-              onClick={() => fetch(htmlVideoRef.current.currentSrc)}
-              disabled={downloaded}
+          <>
+            <Box marginTop={6} marginBottom={-1}>
+              {video}
+            </Box>
+            <Box
+              key={index}
+              alignItems="start"
+              borderSize="sm"
+              direction="row"
+              display="flex"
+              padding={3}
             >
-              {label}
-            </button>
-          </div>
+              <Box marginTop={-1} paddingX={1} flex="grow">
+                <Text weight="bold">Title</Text>
+                <Text>Description</Text>
+              </Box>
+              <Box paddingX={1}>
+                <Button
+                  text={label}
+                  onClick={() => fetch(htmlVideoRef.current.currentSrc)}
+                  disabled={downloaded}
+                  iconEnd="download"
+                />
+                <Box paddingY={1} />
+                <Link to={`/${node.public_id}`}>
+                  <Button
+                    text="Play"
+                    iconEnd="play"
+                    type="submit"
+                    accessibilityLabel="Play"
+                  />
+                </Link>
+              </Box>
+            </Box>
+          </>
         )
       })}
-      <Link to="/page-2/">Go to page 2</Link>
     </Layout>
   )
 }

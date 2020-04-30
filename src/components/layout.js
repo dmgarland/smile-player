@@ -19,10 +19,12 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <Box color="lightGray">
+    <div style={{ background: "#d0e8ff" }}>
       <Container>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
+        <Box color="white" padding={6}>
+          <main>{children}</main>
+        </Box>
         <footer>
           <Text>
             Built with
@@ -31,7 +33,7 @@ const Layout = ({ children }) => {
           </Text>
         </footer>
       </Container>
-    </Box>
+    </div>
   )
 }
 

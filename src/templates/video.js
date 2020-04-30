@@ -5,7 +5,7 @@ import { Heading, Button, Box, Text, IconButton } from "gestalt"
 import { Link, graphql } from "gatsby"
 
 export default ({ pageContext }) => {
-  const { public_id, title, description } = pageContext
+  const { public_id, title, description, created_at } = pageContext
 
   return (
     <Layout>
@@ -25,6 +25,11 @@ export default ({ pageContext }) => {
 
       <Box paddingY={6}>
         <Text>{description}</Text>
+        <Box marginTop={2}>
+          <Text color="gray" italic>
+            Added {created_at}
+          </Text>
+        </Box>
       </Box>
       <Box paddingY={6}>
         <Link to="/">

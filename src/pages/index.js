@@ -53,8 +53,17 @@ const IndexPage = ({ data }) => {
               padding={3}
             >
               <Box marginTop={-1} paddingX={1} flex="grow">
-                <Text weight="bold">{title}</Text>
-                <Text>{description}</Text>
+                <Text color="gray" italic>
+                  {node.created_at}
+                </Text>
+                <Box marginTop={2}>
+                  <Heading accessibilityLevel={3} size="sm">
+                    {title}
+                  </Heading>
+                </Box>
+                <Box marginTop={2}>
+                  <Text>{description}</Text>
+                </Box>
               </Box>
               <Box paddingX={1}>
                 <Button
@@ -90,6 +99,7 @@ export const query = graphql`
       edges {
         node {
           public_id
+          created_at(fromNow: true)
           context {
             custom {
               alt

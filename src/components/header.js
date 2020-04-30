@@ -1,23 +1,35 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import Image from "./image"
 import { Box, Heading } from "gestalt"
 
 const Header = ({ siteTitle }) => (
-  <header>
-    <Box color="darkGray">
-      <Heading align="left" accessibilityLevel={1}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </Heading>
-    </Box>
+  <header style={{ background: "#ffff00" }}>
+    <Link
+      to="/"
+      style={{
+        textDecoration: `none`
+      }}
+    >
+      <Box
+        alignItems="start"
+        direction="row"
+        display="flex"
+        height="60"
+        borderSize="sm"
+        bottom
+      >
+        <Box paddingX={1}>
+          <Image path="sunshine.jpg" />
+        </Box>
+        <Box>
+          <Heading align="center" accessibilityLevel={1}>
+            {siteTitle}
+          </Heading>
+        </Box>
+      </Box>
+    </Link>
   </header>
 )
 

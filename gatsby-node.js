@@ -1,7 +1,31 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require("path")
 
-// You can delete this file if you're not using it
+module.exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
+
+  const result = await graphql(`
+    query {
+      allCloudinaryMedia {
+        edges {
+          node {
+            public_id
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) {
+    console.error(result.errors)
+  }
+
+  result.data.allCloudinaryMedia.edges.forEach(({ node }) =>
+    createPage({
+      path: node.public_id,
+      component: path.resolve("src/templates/video.js"),
+      context: {
+        public_id: node.public_id,
+      },
+    })
+  )
+}

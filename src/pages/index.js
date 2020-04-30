@@ -35,6 +35,9 @@ const IndexPage = ({ data }) => {
           result.match(new RegExp(node.public_id))
         )
         const label = downloaded ? "Saved" : "Download"
+        const title =
+          (node.context && node.context.custom.caption) || "No Title"
+        const description = node.context && node.context.custom.alt
 
         return (
           <>
@@ -50,8 +53,8 @@ const IndexPage = ({ data }) => {
               padding={3}
             >
               <Box marginTop={-1} paddingX={1} flex="grow">
-                <Text weight="bold">Title</Text>
-                <Text>Description</Text>
+                <Text weight="bold">{title}</Text>
+                <Text>{description}</Text>
               </Box>
               <Box paddingX={1}>
                 <Button
@@ -87,6 +90,12 @@ export const query = graphql`
       edges {
         node {
           public_id
+          context {
+            custom {
+              alt
+              caption
+            }
+          }
         }
       }
     }

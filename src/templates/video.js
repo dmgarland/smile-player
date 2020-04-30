@@ -5,21 +5,28 @@ import { Heading, Button, Box, Text, IconButton } from "gestalt"
 import { Link, graphql } from "gatsby"
 
 export default ({ pageContext }) => {
-  const { public_id } = pageContext
+  const { public_id, title, description } = pageContext
 
   return (
     <Layout>
-      <Heading accessibilityLevel={1} paddingY={6}>
-        Title
-      </Heading>
+      <Box marginBottom={6}>
+        <Heading accessibilityLevel={1} paddingY={6}>
+          {title}
+        </Heading>
+      </Box>
       <Video
         crossOrigin="anonymous"
         controls
+        autoplay="autoplay"
         cloudName="dymvtkv1m"
         publicId={public_id}
         width="100%"
       />
-      <Box paddingY={12}>
+
+      <Box paddingY={6}>
+        <Text>{description}</Text>
+      </Box>
+      <Box paddingY={6}>
         <Link to="/">
           <Button text="Back" type="submit" inline />
         </Link>

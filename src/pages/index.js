@@ -65,6 +65,7 @@ const IndexPage = ({ data }) => {
                   <Button
                     text="Play"
                     iconEnd="play"
+                    inline
                     type="submit"
                     accessibilityLabel="Play"
                   />

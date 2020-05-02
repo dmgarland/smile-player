@@ -28,7 +28,7 @@ const IndexPage = ({ data }) => {
             preload="metadata"
             width="100%"
           >
-            <Transformation width="400" height="300" gravity="center" />
+            <Transformation videoCodec="auto" />
           </Video>
         )
         const downloaded = cached.find(result =>

@@ -21,7 +21,9 @@ export default ({ pageContext }) => {
         cloudName="dymvtkv1m"
         publicId={public_id}
         width="100%"
-      />
+      >
+        <Transformation videoCodec="auto" />
+      </Video>
 
       <Box paddingY={6}>
         <Text>{description}</Text>

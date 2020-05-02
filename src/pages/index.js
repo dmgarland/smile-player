@@ -27,6 +27,7 @@ const IndexPage = ({ data }) => {
             innerRef={htmlVideoRef}
             preload="metadata"
             width="100%"
+            secure="true"
           >
             <Transformation videoCodec="auto" />
           </Video>

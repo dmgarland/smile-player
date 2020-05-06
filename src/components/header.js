@@ -19,6 +19,7 @@ const Header = ({ siteTitle }) => (
         height="60"
         borderSize="sm"
         bottom
+        marginBottom={3}
       >
         <Box paddingX={1}>
           <Image path="sunshine.jpg" />

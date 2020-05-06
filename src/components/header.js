@@ -1,11 +1,11 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import Image from "./image"
 import { Box, Heading } from "gestalt"
+import sunshine from "../images/sunshine.svg"
 
 const Header = ({ siteTitle }) => (
-  <header style={{ background: "#ffff00" }}>
+  <header>
     <Link
       to="/"
       style={{
@@ -13,16 +13,14 @@ const Header = ({ siteTitle }) => (
       }}
     >
       <Box
-        alignItems="start"
+        alignItems="center"
         direction="row"
         display="flex"
-        height="60"
         borderSize="sm"
         bottom
-        marginBottom={3}
       >
-        <Box paddingX={1}>
-          <Image path="sunshine.jpg" />
+        <Box marginRight={3}>
+          <img src={sunshine} alt="Smiling Remotely" id="logo" />
         </Box>
         <Box>
           <Heading align="center" accessibilityLevel={1} color="orange">

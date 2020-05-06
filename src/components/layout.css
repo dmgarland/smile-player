@@ -3,7 +3,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-    font-family: raleway, sans-serif;
+  font-family: raleway, sans-serif;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,4 +23,12 @@ h1,h2{
 
 @media all and (display-mode: standalone) {
     #install-banner { display: none }
+}
+
+#logo {
+   width: 80px
+}
+
+header {
+    background: white
 }

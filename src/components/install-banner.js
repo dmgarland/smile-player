@@ -4,7 +4,7 @@ import { Sticky, Text, Button, Box } from "gestalt"
 
 const InstallBanner = () => {
   const [installEvent, setInstallEvent] = useState(null)
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
 
   const saveInstallEvent = e => {
     e.preventDefault()

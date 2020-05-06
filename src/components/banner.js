@@ -5,6 +5,7 @@ const Banner = ({ setVisible, children }) => (
   <Box
     alignItems="center"
     display="flex"
+    direction="row"
     height={60}
     color="blue"
     rounding="pill"

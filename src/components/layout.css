@@ -16,3 +16,11 @@ a {
 h1,h2{
     color:"#f8cf01" !important
 }
+
+@media all and (display-mode: minimal-ui) {
+    #install-banner { display: none }
+}
+
+@media all and (display-mode: standalone) {
+    #install-banner { display: none }
+}

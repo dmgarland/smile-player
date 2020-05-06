@@ -28,7 +28,7 @@ module.exports = {
         background_color: "#f8cf01",
         theme_color: "#f8cf01",
         display: "minimal-ui",
-        icon: "src/images/sunshine.jpg",
+        icon: "src/images/sunshine.svg",
         lang: "en",
         cache_busting_mode: "none",
       },

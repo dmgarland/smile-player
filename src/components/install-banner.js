@@ -7,6 +7,7 @@ const InstallBanner = () => {
   const [visible, setVisible] = useState(false)
 
   const saveInstallEvent = e => {
+    console.log("install event")
     e.preventDefault()
     setInstallEvent(e)
     setVisible(true)

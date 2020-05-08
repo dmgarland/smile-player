@@ -1,14 +1,12 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import { Heading, Button, Box, Text, IconButton } from "gestalt"
-import { Video, Transformation } from "cloudinary-react"
+import { graphql } from "gatsby"
+import { Heading } from "gestalt"
 import Layout from "../components/layout"
+import VideoContainer from "../components/video-container"
 import SEO from "../components/seo"
-import useCache from "../hooks/cache"
 
 const IndexPage = ({ data }) => {
   const videos = data.allCloudinaryMedia.edges
-  const cached = useCache()
 
   return (
     <Layout>
@@ -16,78 +14,15 @@ const IndexPage = ({ data }) => {
       <Heading accessibilityLevel={2} paddingY={2} size="sm" color="orange">
         Available Songs
       </Heading>
-      {videos.map(({ node }, index) => {
-        const htmlVideoRef = React.createRef()
-
-        const video = (
-          <Video
-            crossOrigin="anonymous"
-            cloudName="dymvtkv1m"
-            publicId={node.public_id}
-            innerRef={htmlVideoRef}
-            preload="metadata"
-            width="100%"
-            secure="true"
-          >
-            <Transformation videoCodec="auto" />
-          </Video>
-        )
-        const downloaded = cached.find(result =>
-          result.match(new RegExp(node.public_id))
-        )
-        const label = downloaded ? "Saved" : "Download"
-        const title =
-          (node.context && node.context.custom.caption) || "No Title"
-        const description = node.context && node.context.custom.alt
-
-        return (
-          <>
-            <Box marginTop={6} marginBottom={-1}>
-              {video}
-            </Box>
-            <Box
-              key={index}
-              alignItems="start"
-              borderSize="sm"
-              direction="row"
-              display="flex"
-              padding={3}
-            >
-              <Box marginTop={-1} paddingX={1} flex="grow">
-                <Text color="gray" italic>
-                  {node.created_at}
-                </Text>
-                <Box marginTop={2}>
-                  <Heading accessibilityLevel={3} size="sm">
-                    {title}
-                  </Heading>
-                </Box>
-                <Box marginTop={2}>
-                  <Text>{description}</Text>
-                </Box>
-              </Box>
-              <Box paddingX={1}>
-                <Button
-                  text={label}
-                  onClick={() => fetch(htmlVideoRef.current.currentSrc)}
-                  disabled={downloaded}
-                  iconEnd="download"
-                />
-                <Box paddingY={1} />
-                <Link to={`/${node.public_id}`}>
-                  <Button
-                    text="Play"
-                    iconEnd="play"
-                    inline
-                    type="submit"
-                    accessibilityLabel="Play"
-                  />
-                </Link>
-              </Box>
-            </Box>
-          </>
-        )
-      })}
+      {videos.map(({ node }, index) => (
+        <VideoContainer
+          key={index}
+          public_id={node.public_id}
+          title={node.context && node.context.custom.caption}
+          description={node.context && node.context.custom.alt}
+          created_at={node.created_at}
+        />
+      ))}
     </Layout>
   )
 }

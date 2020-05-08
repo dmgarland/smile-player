@@ -1,8 +1,8 @@
 import React from "react"
 import { Video, Transformation } from "cloudinary-react"
 import Layout from "../components/layout"
-import { Heading, Button, Box, Text, IconButton } from "gestalt"
-import { Link, graphql } from "gatsby"
+import { Heading, Button, Box, Text } from "gestalt"
+import { Link } from "gatsby"
 
 export default ({ pageContext }) => {
   const { public_id, title, description, created_at } = pageContext

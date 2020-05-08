@@ -29,12 +29,7 @@ const download = async ({ url, setProgress }) => {
     position += chunk.length
   }
 
-  // Step 5: decode into a string
-  let result = new TextDecoder("utf-8").decode(chunksAll)
-
-  // We're done!
-  let commits = JSON.parse(result)
-  alert(commits[0].author.login)
+  return chunksAll
 }
 
 export default download

@@ -7,7 +7,6 @@ const InstallBanner = () => {
   const [visible, setVisible] = useState(false)
 
   const saveInstallEvent = e => {
-    console.log("install event")
     e.preventDefault()
     setInstallEvent(e)
     setVisible(true)
@@ -37,9 +36,7 @@ const InstallBanner = () => {
                   installEvent.prompt()
                   installEvent.userChoice.then(choice => {
                     if (choice.outcome === "accepted") {
-                      console.log("accepted")
                     } else {
-                      console.log("rejected")
                     }
                   })
                 }}

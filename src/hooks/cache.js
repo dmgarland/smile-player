@@ -9,7 +9,7 @@ const useCache = () => {
       .then(cache => cache.keys())
       .then(keys => keys.map(req => req.url))
       .then(urls => setCached(urls))
-  }, [cached])
+  }, [])
 
   return cached
 }

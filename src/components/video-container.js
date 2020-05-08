@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { Video, Transformation } from "cloudinary-react"
@@ -7,28 +7,32 @@ import DownloadButton from "./download-button"
 import useCache from "../hooks/cache"
 
 const VideoContainer = ({ public_id, title, description, created_at }) => {
+  const [downloadURL, setDownloadURL] = useState(null)
   const htmlVideoRef = React.createRef()
   const cached = useCache()
 
-  const video = (
-    <Video
-      crossOrigin="anonymous"
-      cloudName="dymvtkv1m"
-      publicId={public_id}
-      innerRef={htmlVideoRef}
-      preload="metadata"
-      width="100%"
-      secure="true"
-    >
-      <Transformation videoCodec="auto" />
-    </Video>
-  )
+  useEffect(() => {
+    if (htmlVideoRef.current && htmlVideoRef.current.currentSrc) {
+      setDownloadURL(htmlVideoRef.current.currentSrc)
+    }
+  }, [htmlVideoRef])
+
   const is_cached = cached.find(result => result.match(new RegExp(public_id)))
 
   return (
     <>
       <Box marginTop={6} marginBottom={-1}>
-        {video}
+        <Video
+          crossOrigin="anonymous"
+          cloudName="dymvtkv1m"
+          publicId={public_id}
+          innerRef={htmlVideoRef}
+          preload="metadata"
+          width="100%"
+          secure="true"
+        >
+          <Transformation videoCodec="auto" />
+        </Video>
       </Box>
       <Box
         alignItems="start"
@@ -51,10 +55,7 @@ const VideoContainer = ({ public_id, title, description, created_at }) => {
           </Box>
         </Box>
         <Box paddingX={1}>
-          <DownloadButton
-            url={htmlVideoRef.current && htmlVideoRef.current.currentSrc}
-            is_cached={is_cached}
-          />
+          <DownloadButton url={downloadURL} is_cached={is_cached} />
           <Box paddingY={1} />
           <Link to={`/${public_id}`}>
             <Button

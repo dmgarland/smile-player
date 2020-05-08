@@ -32,7 +32,7 @@ const DownloadButton = ({ url, is_cached }) => {
 
 export default DownloadButton
 
-// DownloadButton.propTypes = {
-//   url: PropTypes.string,
-//   is_cached: PropTypes.bool
-// }
+DownloadButton.propTypes = {
+  url: PropTypes.string,
+  is_cached: PropTypes.bool
+}

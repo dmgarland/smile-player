@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import "typeface-raleway"
 import Header from "./header"
 import InstallBanner from "./install-banner"
-import { Box, Container, Text, Sticky, Button } from "gestalt"
+import { Box, Container, Text } from "gestalt"
 import "./layout.css"
 import "gestalt/dist/gestalt.css"
 

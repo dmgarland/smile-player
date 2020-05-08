@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { Video, Transformation } from "cloudinary-react"
-import { Heading, Button, Box, Text } from "gestalt"
+import { Heading, Button, Box, Text, Card } from "gestalt"
 import DownloadButton from "./download-button"
 import useCache from "../hooks/cache"
 
@@ -20,55 +20,59 @@ const VideoContainer = ({ public_id, title, description, created_at }) => {
   const is_cached = cached.find(result => result.match(new RegExp(public_id)))
 
   return (
-    <>
-      <Box marginTop={6} marginBottom={-1}>
-        <Video
-          crossOrigin="anonymous"
-          cloudName="dymvtkv1m"
-          publicId={public_id}
-          innerRef={htmlVideoRef}
-          preload="metadata"
-          width="100%"
-          secure="true"
+    <Box marginTop={6} borderSize="sm" padding={2} rounding={3}>
+      <Link to={`/${public_id}`}>
+        <Card
+          image={
+            <Video
+              crossOrigin="anonymous"
+              cloudName="dymvtkv1m"
+              publicId={public_id}
+              innerRef={htmlVideoRef}
+              preload="metadata"
+              width="100%"
+              secure="true"
+            >
+              <Transformation videoCodec="auto" />
+            </Video>
+          }
         >
-          <Transformation videoCodec="auto" />
-        </Video>
-      </Box>
+          <Box alignItems="start" direction="row" display="flex" padding={3}>
+            <Box marginTop={-1} paddingX={1} flex="grow">
+              <Text color="gray" italic>
+                {created_at}
+              </Text>
+              <Box marginTop={2}>
+                <Heading accessibilityLevel={3} size="sm">
+                  {title}
+                </Heading>
+              </Box>
+              <Box marginTop={2}>
+                <Text>{description}</Text>
+              </Box>
+            </Box>
+            <Box paddingX={1}>
+              <Button
+                text="Play"
+                iconEnd="play"
+                inline
+                type="submit"
+                accessibilityLabel="Play"
+              />
+            </Box>
+          </Box>
+        </Card>
+      </Link>
       <Box
-        alignItems="start"
-        borderSize="sm"
-        direction="row"
+        alignItems="center"
+        alignContent="center"
+        justifyContent="center"
         display="flex"
-        padding={3}
+        paddingY={3}
       >
-        <Box marginTop={-1} paddingX={1} flex="grow">
-          <Text color="gray" italic>
-            {created_at}
-          </Text>
-          <Box marginTop={2}>
-            <Heading accessibilityLevel={3} size="sm">
-              {title}
-            </Heading>
-          </Box>
-          <Box marginTop={2}>
-            <Text>{description}</Text>
-          </Box>
-        </Box>
-        <Box paddingX={1}>
-          {!is_cached && <DownloadButton url={downloadURL} />}
-          <Box paddingY={1} />
-          <Link to={`/${public_id}`}>
-            <Button
-              text="Play"
-              iconEnd="play"
-              inline
-              type="submit"
-              accessibilityLabel="Play"
-            />
-          </Link>
-        </Box>
+        {!is_cached && <DownloadButton url={downloadURL} />}
       </Box>
-    </>
+    </Box>
   )
 }
 

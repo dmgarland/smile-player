@@ -4,6 +4,7 @@ import { Box, Text, Button } from "gestalt"
 import download from "../lib/download"
 
 const DownloadButton = ({ url }) => {
+  const [isDownloading, setIsDownloading] = useState(false)
   const [label, setLabel] = useState("Preparing...")
   const [progress, setProgress] = useState(0)
   const onUpdate = progress => {
@@ -11,12 +12,13 @@ const DownloadButton = ({ url }) => {
     setLabel(progress < 1 ? "Downloading" : "Done")
   }
 
+  const onClick = () => {
+    setIsDownloading(true)
+    download({ url, onUpdate })
+  }
+
   const button = (
-    <Button
-      text="Download"
-      onClick={() => download({ url, onUpdate })}
-      iconEnd="download"
-    />
+    <Button text="Download" onClick={onClick} iconEnd="download" inline />
   )
 
   const progressBar = (
@@ -26,7 +28,7 @@ const DownloadButton = ({ url }) => {
     </Box>
   )
 
-  return progress > 0 ? progressBar : button
+  return isDownloading ? progressBar : button
 }
 
 export default DownloadButton

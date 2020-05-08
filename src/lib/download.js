@@ -1,13 +1,10 @@
-const download = async ({ url, setProgress }) => {
+const download = async ({ url, onUpdate }) => {
   const response = await fetch(url)
   const reader = response.body.getReader()
-
-  // Step 2: get total length
   const contentLength = parseInt(response.headers.get("Content-Length"))
 
-  // Step 3: read the data
-  let received = 0 // received that many bytes at the moment
-  let chunks = [] // array of received binary chunks (comprises the body)
+  let received = 0
+  let chunks = []
   while (true) {
     const { done, value } = await reader.read()
 
@@ -17,15 +14,13 @@ const download = async ({ url, setProgress }) => {
 
     chunks.push(value)
     received += value.length
-
-    setProgress((received / contentLength).toFixed(0))
+    onUpdate(received / contentLength)
   }
 
-  // Step 4: concatenate chunks into single Uint8Array
-  let chunksAll = new Uint8Array(received) // (4.1)
+  let chunksAll = new Uint8Array(received)
   let position = 0
   for (let chunk of chunks) {
-    chunksAll.set(chunk, position) // (4.2)
+    chunksAll.set(chunk, position)
     position += chunk.length
   }
 

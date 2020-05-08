@@ -1,33 +1,32 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { Button } from "gestalt"
+import { Box, Text, Button } from "gestalt"
 import download from "../lib/download"
 
-const label = ({ is_cached, progress }) => {
-  if (is_cached) {
-    return "Saved"
-  } else if (progress > 0) {
-    return "Downloading"
-  } else {
-    return "Download"
-  }
-}
-
-const DownloadButton = ({ url, is_cached }) => {
+const DownloadButton = ({ url }) => {
+  const [label, setLabel] = useState("Preparing...")
   const [progress, setProgress] = useState(0)
-  const progressBar = progress ? <progress value={progress} /> : null
+  const onUpdate = progress => {
+    setProgress(progress)
+    setLabel(progress < 1 ? "Downloading" : "Done")
+  }
 
-  return (
-    <>
-      <Button
-        text={label({ is_cached, progress })}
-        onClick={() => download({ url, setProgress })}
-        disabled={progress > 0}
-        iconEnd="download"
-      />
-      {progressBar}
-    </>
+  const button = (
+    <Button
+      text="Download"
+      onClick={() => download({ url, onUpdate })}
+      iconEnd="download"
+    />
   )
+
+  const progressBar = (
+    <Box>
+      <Text align="center">{label}</Text>
+      <progress value={progress} />
+    </Box>
+  )
+
+  return progress > 0 ? progressBar : button
 }
 
 export default DownloadButton

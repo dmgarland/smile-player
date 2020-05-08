@@ -55,7 +55,7 @@ const VideoContainer = ({ public_id, title, description, created_at }) => {
           </Box>
         </Box>
         <Box paddingX={1}>
-          <DownloadButton url={downloadURL} is_cached={is_cached} />
+          {!is_cached && <DownloadButton url={downloadURL} />}
           <Box paddingY={1} />
           <Link to={`/${public_id}`}>
             <Button

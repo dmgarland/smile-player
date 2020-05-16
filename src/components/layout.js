@@ -7,6 +7,7 @@ import InstallBanner from "./install-banner"
 import { Box, Container, Text } from "gestalt"
 import "./layout.css"
 import "gestalt/dist/gestalt.css"
+import Update from "./update"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -36,6 +37,7 @@ const Layout = ({ children }) => {
           </Text>
         </Box>
       </footer>
+      <Update />
     </Container>
   )
 }

@@ -20,8 +20,14 @@ const VideoContainer = ({ public_id, title, description, created_at }) => {
   const is_cached = cached.find(result => result.match(new RegExp(public_id)))
 
   return (
-    <Box marginTop={6} borderSize="sm" padding={2} rounding={3}>
-      <Link to={`/${public_id}`}>
+    <Box
+      marginTop={6}
+      mdPadding={2}
+      smColumn={12}
+      mdColumn={6}
+      display="inlineBlock"
+    >
+      <Box color="white" borderSize="sm" mdPadding="2" rounding={3}>
         <Card
           image={
             <Video
@@ -37,40 +43,42 @@ const VideoContainer = ({ public_id, title, description, created_at }) => {
             </Video>
           }
         >
-          <Box alignItems="start" direction="row" display="flex" padding={3}>
-            <Box marginTop={-1} paddingX={1} flex="grow">
-              <Text color="gray" italic>
-                {created_at}
-              </Text>
-              <Box marginTop={2}>
-                <Heading accessibilityLevel={3} size="sm">
-                  {title}
-                </Heading>
+          <Link to={`/${public_id}`}>
+            <Box alignItems="start" direction="row" display="flex" padding={3}>
+              <Box marginTop={-1} paddingX={1} flex="grow">
+                <Text color="gray" italic>
+                  {created_at}
+                </Text>
+                <Box marginTop={2}>
+                  <Heading accessibilityLevel={3} size="sm">
+                    {title}
+                  </Heading>
+                </Box>
+                <Box marginTop={2}>
+                  <Text color="gray">{description}</Text>
+                </Box>
               </Box>
-              <Box marginTop={2}>
-                <Text>{description}</Text>
+              <Box paddingX={1}>
+                <Button
+                  text="Play"
+                  iconEnd="play"
+                  inline
+                  type="submit"
+                  accessibilityLabel="Play"
+                />
               </Box>
             </Box>
-            <Box paddingX={1}>
-              <Button
-                text="Play"
-                iconEnd="play"
-                inline
-                type="submit"
-                accessibilityLabel="Play"
-              />
-            </Box>
+          </Link>
+          <Box
+            alignItems="center"
+            alignContent="center"
+            justifyContent="center"
+            display="flex"
+            paddingY={3}
+          >
+            {!is_cached && <DownloadButton url={downloadURL} />}
           </Box>
         </Card>
-      </Link>
-      <Box
-        alignItems="center"
-        alignContent="center"
-        justifyContent="center"
-        display="flex"
-        paddingY={3}
-      >
-        {!is_cached && <DownloadButton url={downloadURL} />}
       </Box>
     </Box>
   )

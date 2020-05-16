@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import "typeface-raleway"
 import Header from "./header"
 import InstallBanner from "./install-banner"
 import { Box, Container, Text } from "gestalt"
@@ -24,9 +23,9 @@ const Layout = ({ children }) => {
     <Container>
       <Header siteTitle={data.site.siteMetadata.title} />
       <InstallBanner />
-      <Box color="white" padding={6}>
-        <main>{children}</main>
-      </Box>
+      <main>
+        <Box padding={6}>{children}</Box>
+      </main>
       <footer>
         <Box padding={3}>
           <Text>

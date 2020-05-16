@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import { Box, Heading } from "gestalt"
+import { Box, Heading, Image } from "gestalt"
 import sunshine from "../images/sunshine.svg"
 
 const Header = ({ siteTitle }) => (
@@ -9,24 +9,15 @@ const Header = ({ siteTitle }) => (
     <Link
       to="/"
       style={{
-        textDecoration: `none`
+        textDecoration: `none`,
+        display: "block"
       }}
     >
-      <Box
-        alignItems="center"
-        direction="row"
-        display="flex"
-        borderSize="sm"
-        bottom
-      >
-        <Box marginRight={3}>
-          <img src={sunshine} alt="Smiling Remotely" id="logo" />
-        </Box>
-        <Box>
-          <Heading align="center" accessibilityLevel={1} color="orange">
-            {siteTitle}
-          </Heading>
-        </Box>
+      <Box paddingY={6} display="flex" alignItems="center">
+        <img src={sunshine} id="logo" alt="Smiling Remotely" />
+        <Heading align="center" accessibilityLevel={1}>
+          {siteTitle}
+        </Heading>
       </Box>
     </Link>
   </header>

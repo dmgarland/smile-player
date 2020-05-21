@@ -37,14 +37,21 @@ h1,h2,h3,h4,h5,h6{
 }
 
 header  {
-    background: rgba(255, 255, 155, 0.84) ;
+    background: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
 }
 
-#logo {
-    max-width:80px;
-    margin-right: 6px;
-}
 
+#logo  {
+    display: block;
+    width: 48px;
+    height: 48px;
+    background: url('/images/sunshine.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-indent: -1000%;
+    overflow:hidden;
+}
 footer {
     background: #FFFFFF;
 }

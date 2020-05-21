@@ -19,70 +19,73 @@ const Header = ({ siteTitle }) => {
 
   return (
     <header>
-      <Box
-        color="white"
-        display="flex"
-        justifyContent="end"
-        alignItems="start"
-        paddingX="2"
-      >
-        <Box display="inlineBlock" ref={anchorRef}>
-          <IconButton
-            accessibilityLabel="Love Us? Donate!"
-            icon="heart"
-            iconColor="red"
-            size="lg"
-            accessibilityExpanded={!!donateVisible}
-            accessibilityHaspopup
-            onClick={() => {
-              setDonateVisible(!donateVisible)
-            }}
-          />
-          {donateVisible && (
-            <Layer>
-              <Flyout
-                anchor={anchorRef.current}
-                idealDirection="down"
-                onDismiss={() => setDonateVisible(false)}
-                positionRelativeToAnchor={true}
-                size="md"
-              >
-                <Box
-                  padding={3}
-                  display="flex"
-                  alignItems="center"
-                  direction="column"
-                  column={12}
-                >
-                  <Text align="center" weight="bold">
-                    Enjoying our videos? Please donate to help support us to
-                    bring new songs to more care homes near you.
-                  </Text>
-                  <Box paddingX={2} marginTop={3}>
-                    <a href="https://www.paypal.me/shapeshifterprod">
-                      <Button color="blue" text="Donate via PayPal" />
-                    </a>
-                  </Box>
-                </Box>
-              </Flyout>
-            </Layer>
-          )}
-        </Box>
-      </Box>
-      <Link
-        to="/"
-        style={{
-          textDecoration: `none`,
-          display: "block"
-        }}
-      >
-        <Box paddingY={6} display="flex" alignItems="center">
-          <img src={sunshine} id="logo" alt="Smiling Remotely" />
-          <Heading align="center" accessibilityLevel={1}>
+      <Box display="flex" justifyContent="between" alignItems="center">
+        <Link
+          to="/"
+          style={{
+            textDecoration: `none`
+          }}
+          id="logo"
+        >
+          Smiling Remotely
+        </Link>
+
+        <Link
+          to="/"
+          style={{
+            textDecoration: `none`
+          }}
+        >
+          <Heading align="center" accessibilityLevel={1} size="sm">
             {siteTitle}
           </Heading>
+        </Link>
+
+        <Box paddingX="2">
+          <Box display="inlineBlock" ref={anchorRef}>
+            <IconButton
+              accessibilityLabel="Love Us? Donate!"
+              icon="heart"
+              iconColor="red"
+              size="lg"
+              accessibilityExpanded={!!donateVisible}
+              accessibilityHaspopup
+              onClick={() => {
+                setDonateVisible(!donateVisible)
+              }}
+            />
+            {donateVisible && (
+              <Layer>
+                <Flyout
+                  anchor={anchorRef.current}
+                  idealDirection="down"
+                  onDismiss={() => setDonateVisible(false)}
+                  positionRelativeToAnchor={true}
+                  size="md"
+                >
+                  <Box
+                    padding={3}
+                    display="flex"
+                    alignItems="center"
+                    direction="column"
+                    column={12}
+                  >
+                    <Text align="center" weight="bold">
+                      Enjoying our videos? Please donate to help support us to
+                      bring new songs to more care homes near you.
+                    </Text>
+                    <Box paddingX={2} marginTop={3}>
+                      <a href="https://www.paypal.me/shapeshifterprod">
+                        <Button color="blue" text="Donate via PayPal" />
+                      </a>
+                    </Box>
+                  </Box>
+                </Flyout>
+              </Layer>
+            )}
+          </Box>
         </Box>
-      </Link>
+      </Box>
     </header>
   )
 }

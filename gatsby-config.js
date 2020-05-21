@@ -4,8 +4,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Smiling Remotely`,
-    description: `The Smiling Remotely Weekly Singalong Sessions App provides a mobile video experience that puts a smile on your face`,
+    title: `Smiling Sessions`,
+    description: `The Smiling Sessions App provides a mobile video experience that puts a smile on your face`,
     author: `Dan Garland`,
   },
   plugins: [

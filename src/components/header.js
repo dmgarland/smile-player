@@ -27,7 +27,7 @@ const Header = ({ siteTitle }) => {
           }}
           id="logo"
         >
-          Smiling Remotely
+          {siteTitle}
         </Link>
 
         <Link

@@ -31,11 +31,10 @@ export default IndexPage
 
 export const query = graphql`
   query {
-    allCloudinaryMedia {
+    allCloudinaryMedia(sort: { fields: created_at }) {
       edges {
         node {
           public_id
-          created_at(fromNow: true)
           context {
             custom {
               alt

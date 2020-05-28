@@ -8,14 +8,21 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #FFCC00 url('/images/background.svg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
 
 main {
-    background: rgba(255, 255, 255, 0.8)
+    border-left-color: rgb(230, 236, 240);
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-right-color: rgb(230, 236, 240);
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-bottom-color: rgb(230, 236, 240);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 
 a {
@@ -37,22 +44,10 @@ h1,h2,h3,h4,h5,h6{
 }
 
 header  {
-    background: rgba(255, 255, 255, 0.9);
     text-transform: uppercase;
+    border-bottom: 1px solid rgb(204, 214, 221);
 }
 
-
-#logo  {
-    display: block;
-    width: 48px;
-    height: 48px;
-    background: url('/images/sunshine.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    text-indent: -1000%;
-    overflow:hidden;
-}
 footer {
-    background: #FFFFFF;
 }
 

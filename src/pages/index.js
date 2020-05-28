@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Heading, Box } from "gestalt"
+import { Heading } from "gestalt"
 import Layout from "../components/layout"
 import VideoContainer from "../components/video-container"
 import SEO from "../components/seo"

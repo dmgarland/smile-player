@@ -4,14 +4,14 @@ import React, { useState } from "react"
 import {
   Box,
   Heading,
-  Image,
   IconButton,
   Layer,
   Flyout,
   Text,
-  Button
+  Button,
+  Container
 } from "gestalt"
-import sunshine from "../images/sunshine.svg"
+import logo from "../images/sunshine-fading.svg"
 
 const Header = ({ siteTitle }) => {
   const [donateVisible, setDonateVisible] = useState(false)
@@ -19,73 +19,67 @@ const Header = ({ siteTitle }) => {
 
   return (
     <header>
-      <Box display="flex" justifyContent="between" alignItems="center">
-        <Link
-          to="/"
-          style={{
-            textDecoration: `none`
-          }}
-          id="logo"
-        >
-          {siteTitle}
-        </Link>
+      <Container>
+        <Box display="flex" justifyContent="between" alignItems="center">
+          <img alt={siteTitle} height={48} width={48} src={logo} />
 
-        <Link
-          to="/"
-          style={{
-            textDecoration: `none`
-          }}
-        >
-          <Heading align="center" accessibilityLevel={1} size="sm">
-            {siteTitle}
-          </Heading>
-        </Link>
+          <Link
+            to="/"
+            style={{
+              textDecoration: `none`
+            }}
+          >
+            <Heading align="center" accessibilityLevel={1} size="sm">
+              {siteTitle}
+            </Heading>
+          </Link>
 
-        <Box paddingX="2">
-          <Box display="inlineBlock" ref={anchorRef}>
-            <IconButton
-              accessibilityLabel="Love Us? Donate!"
-              icon="heart"
-              iconColor="red"
-              size="lg"
-              accessibilityExpanded={!!donateVisible}
-              accessibilityHaspopup
-              onClick={() => {
-                setDonateVisible(!donateVisible)
-              }}
-            />
-            {donateVisible && (
-              <Layer>
-                <Flyout
-                  anchor={anchorRef.current}
-                  idealDirection="down"
-                  onDismiss={() => setDonateVisible(false)}
-                  positionRelativeToAnchor={true}
-                  size="md"
-                >
-                  <Box
-                    padding={3}
-                    display="flex"
-                    alignItems="center"
-                    direction="column"
-                    column={12}
+          <Box paddingX="2">
+            <Box display="inlineBlock" ref={anchorRef}>
+              <IconButton
+                accessibilityLabel="Love Us? Donate!"
+                icon="heart"
+                iconColor="red"
+                size="lg"
+                accessibilityExpanded={!!donateVisible}
+                accessibilityHaspopup
+                onClick={() => {
+                  setDonateVisible(!donateVisible)
+                }}
+              />
+              {donateVisible && (
+                <Layer>
+                  <Flyout
+                    anchor={anchorRef.current}
+                    idealDirection="down"
+                    onDismiss={() => setDonateVisible(false)}
+                    positionRelativeToAnchor={true}
+                    size="md"
                   >
-                    <Text align="center" weight="bold">
-                      Enjoying our videos? Please donate to help support us to
-                      bring new songs to more care homes near you.
-                    </Text>
-                    <Box paddingX={2} marginTop={3}>
-                      <a href="https://www.paypal.me/shapeshifterprod">
-                        <Button color="blue" text="Donate via PayPal" />
-                      </a>
+                    <Box
+                      padding={3}
+                      display="flex"
+                      alignItems="center"
+                      direction="column"
+                      column={12}
+                    >
+                      <Text align="center" weight="bold">
+                        Enjoying our videos? Please donate to help support us to
+                        bring new songs to more care homes near you.
+                      </Text>
+                      <Box paddingX={2} marginTop={3}>
+                        <a href="https://www.paypal.me/shapeshifterprod">
+                          <Button color="blue" text="Donate via PayPal" />
+                        </a>
+                      </Box>
                     </Box>
-                  </Box>
-                </Flyout>
-              </Layer>
-            )}
+                  </Flyout>
+                </Layer>
+              )}
+            </Box>
           </Box>
         </Box>
-      </Box>
+      </Container>
     </header>
   )
 }

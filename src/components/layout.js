@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import InstallBanner from "./install-banner"
-import { Box, Container, Text } from "gestalt"
+import { Box, Container, Text, Link } from "gestalt"
 import "./layout.css"
 import "gestalt/dist/gestalt.css"
 import Update from "./update"
@@ -20,24 +20,29 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <Container>
+    <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <InstallBanner />
-      <main>
-        <Box padding={6}>{children}</Box>
-      </main>
-      <footer>
-        <Box padding={3}>
-          <Text>
-            Brought to you by{" "}
-            <a href="http://www.shapeshifter-productions.com">
-              Shapeshifter Productions Ltd.
-            </a>
-          </Text>
-        </Box>
-      </footer>
-      <Update />
-    </Container>
+      <Container>
+        <main>
+          <InstallBanner />
+          <Box padding={6}>{children}</Box>
+        </main>
+        <footer>
+          <Box padding={3}>
+            <Text color="gray" align="center">
+              Brought to you by{" "}
+              <Link
+                href="http://www.shapeshifter-productions.com"
+                inline="true"
+              >
+                Shapeshifter Productions Ltd.
+              </Link>
+            </Text>
+          </Box>
+        </footer>
+        <Update />
+      </Container>
+    </>
   )
 }
 

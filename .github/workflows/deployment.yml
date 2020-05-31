@@ -20,7 +20,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
           ftp-username: ${{ secrets.SFTP_USERNAME }}
-          ftp-server: ${{ secrets.SFTP_SERVER }}
+          ftp-server: sftp://${{ secrets.SFTP_SERVER }}
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           # ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           local_dir: './public/*'

@@ -1,0 +1,23 @@
+name: Build and Deploy
+
+on: [push]
+
+jobs:
+  build:
+    name: Build Gatsby Site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Build Gatsby Site
+        uses: jzweifel/gatsby-cli-github-action@master
+        with:
+          gatsby-arg: build
+      - name: Deploy to Greenman 
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with:
+          username: ${{ secrets.SFTP_USERNAME }}
+          server: ${{ secrets.SFTP_SERVER }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          local_path: './public/*'
+          remote_path: '/'
+          args: '-o ConnectTimeout=5'

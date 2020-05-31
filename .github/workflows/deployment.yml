@@ -9,6 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Build Gatsby Site
+        env:
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+          GATSBY_CLOUDINARY_CLOUD_NAME: ${{ secrets.GATSBY_CLOUDINARY_CLOUD_NAME }}
         uses: jzweifel/gatsby-cli-github-action@master
         with:
           gatsby-arg: build

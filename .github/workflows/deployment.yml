@@ -23,4 +23,4 @@ jobs:
           ftp-server: sftp://${{ secrets.SFTP_SERVER }}
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           # ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          local_dir: './public/*'
+          local-dir: './public/*'

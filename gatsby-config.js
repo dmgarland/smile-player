@@ -17,6 +17,7 @@ module.exports = {
         apiSecret: process.env.CLOUDINARY_API_SECRET,
         resourceType: `video`,
         context: true,
+        tags: true
       },
     },
     {

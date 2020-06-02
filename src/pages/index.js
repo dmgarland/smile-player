@@ -31,7 +31,7 @@ export default IndexPage
 
 export const query = graphql`
   query {
-    allCloudinaryMedia(sort: { fields: created_at }) {
+    allCloudinaryMedia(filter: {tags: {eq: "live"}}, sort: { fields: created_at }) {
       edges {
         node {
           public_id

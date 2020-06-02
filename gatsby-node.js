@@ -5,7 +5,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
 
   const result = await graphql(`
     query {
-      allCloudinaryMedia {
+      allCloudinaryMedia(filter: {tags: {eq: "live"}}) {
         edges {
           node {
             public_id

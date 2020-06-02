@@ -27,12 +27,12 @@ const VideoContainer = ({ public_id, title, description }) => {
       mdColumn={6}
       display="inlineBlock"
     >
-      <Box color="white" borderSize="sm" mdPadding="2" rounding={3}>
+      <Box color="white" borderSize="sm" mdPadding={2} rounding={3}>
         <Card
           image={
             <Video
               crossOrigin="anonymous"
-              cloudName="dymvtkv1m"
+              cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
               publicId={public_id}
               innerRef={htmlVideoRef}
               preload="metadata"

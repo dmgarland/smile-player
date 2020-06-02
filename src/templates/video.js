@@ -18,7 +18,7 @@ export default ({ pageContext }) => {
         crossOrigin="anonymous"
         controls
         autoplay="autoplay"
-        cloudName="dymvtkv1m"
+        cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
         publicId={public_id}
         width="100%"
         secure={true}

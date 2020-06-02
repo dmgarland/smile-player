@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
               Brought to you by{" "}
               <Link
                 href="http://www.shapeshifter-productions.com"
-                inline="true"
+                inline
               >
                 Shapeshifter Productions Ltd.
               </Link>

@@ -34,7 +34,7 @@ const Header = ({ siteTitle }) => {
             </Heading>
           </Link>
 
-          <Box paddingX="2">
+          <Box paddingX={2}>
             <Box display="inlineBlock" ref={anchorRef}>
               <IconButton
                 accessibilityLabel="Love Us? Donate!"

@@ -17,7 +17,7 @@ export default ({ pageContext }) => {
       <Video
         crossOrigin="anonymous"
         controls
-        autoplay="autoplay"
+        autoPlay="autoplay"
         cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
         publicId={public_id}
         width="100%"

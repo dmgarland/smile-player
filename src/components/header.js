@@ -21,7 +21,7 @@ const Header = ({ siteTitle }) => {
     <header>
       <Container>
         <Box display="flex" justifyContent="between" alignItems="center">
-          <img alt={siteTitle} height={48} width={48} src={logo} />
+          <img alt={siteTitle} height={80} width={80} src={logo} />
 
           <Link
             to="/"

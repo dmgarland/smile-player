@@ -6,7 +6,7 @@ import { Heading, Button, Box, Text, Card } from "gestalt"
 import DownloadButton from "./download-button"
 import useCache from "../hooks/cache"
 
-const VideoContainer = ({ public_id, title, description }) => {
+const VideoContainer = ({ public_id, title, description, week }) => {
   const [downloadURL, setDownloadURL] = useState(null)
   const htmlVideoRef = React.createRef()
   const cached = useCache()
@@ -46,6 +46,7 @@ const VideoContainer = ({ public_id, title, description }) => {
           <Link to={`/${public_id}`}>
             <Box alignItems="start" direction="row" display="flex" padding={3}>
               <Box marginTop={-1} paddingX={1} flex="grow">
+                { week && <Text color="gray" size="sm" italic>Week { week }</Text> }
                 <Box marginTop={2}>
                   <Heading accessibilityLevel={3} size="sm">
                     {title}

@@ -21,6 +21,7 @@ const IndexPage = ({ data }) => {
           title={node.context && node.context.custom.caption}
           description={node.context && node.context.custom.alt}
           created_at={node.created_at}
+          week={node.context.custom.week}
         />
       ))}
     </Layout>
@@ -31,7 +32,7 @@ export default IndexPage
 
 export const query = graphql`
   query {
-    allCloudinaryMedia(filter: {tags: {eq: "live"}}, sort: { fields: created_at }) {
+    allCloudinaryMedia(filter: {tags: {eq: "live"}}, sort: { fields: context___custom___week }) {
       edges {
         node {
           public_id
@@ -39,6 +40,7 @@ export const query = graphql`
             custom {
               alt
               caption
+              week
             }
           }
         }

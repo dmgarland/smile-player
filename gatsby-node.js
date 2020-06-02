@@ -14,6 +14,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
               custom {
                 alt
                 caption
+                week
               }
             }
           }
@@ -35,6 +36,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
         title: node.context && node.context.custom.caption,
         description: node.context && node.context.custom.alt,
         created_at: node.created_at,
+        week: node.context.custom.week
       },
     })
   )

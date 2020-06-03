@@ -23,7 +23,7 @@ export default ({ pageContext }) => {
         width="100%"
         secure={true}
       >
-        <Transformation videoCodec="auto" />
+        <Transformation videoCodec="auto" quality={70}/>
       </Video>
 
       <Box paddingY={6}>

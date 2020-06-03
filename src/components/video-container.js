@@ -39,14 +39,18 @@ const VideoContainer = ({ public_id, title, description, week }) => {
               width="100%"
               secure="true"
             >
-              <Transformation videoCodec="auto" />
+              <Transformation videoCodec="auto" quality={70} />
             </Video>
           }
         >
           <Link to={`/${public_id}`}>
             <Box alignItems="start" direction="row" display="flex" padding={3}>
               <Box marginTop={-1} paddingX={1} flex="grow">
-                { week && <Text color="gray" size="sm" italic>Week { week }</Text> }
+                {week && (
+                  <Text color="gray" size="sm" italic>
+                    Week {week}
+                  </Text>
+                )}
                 <Box marginTop={2}>
                   <Heading accessibilityLevel={3} size="sm">
                     {title}
@@ -88,9 +92,9 @@ VideoContainer.propTypes = {
   public_id: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
-  created_at: PropTypes.string
+  created_at: PropTypes.string,
 }
 
 VideoContainer.defaultProps = {
-  title: "No Title"
+  title: "No Title",
 }

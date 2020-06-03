@@ -6,7 +6,13 @@ import { Heading, Button, Box, Text, Card } from "gestalt"
 import DownloadButton from "./download-button"
 import useCache from "../hooks/cache"
 
-const VideoContainer = ({ public_id, title, description, week }) => {
+const VideoContainer = ({
+  public_id,
+  title,
+  description,
+  week,
+  created_at,
+}) => {
   const [downloadURL, setDownloadURL] = useState(null)
   const htmlVideoRef = React.createRef()
   const cached = useCache()
@@ -18,6 +24,7 @@ const VideoContainer = ({ public_id, title, description, week }) => {
   }, [htmlVideoRef])
 
   const is_cached = cached.find(result => result.match(new RegExp(public_id)))
+  const createdWhenLabel = [week ? `Week ${week}` : "", created_at].join(" - ")
 
   return (
     <Box
@@ -46,11 +53,6 @@ const VideoContainer = ({ public_id, title, description, week }) => {
           <Link to={`/${public_id}`}>
             <Box alignItems="start" direction="row" display="flex" padding={3}>
               <Box marginTop={-1} paddingX={1} flex="grow">
-                {week && (
-                  <Text color="gray" size="sm" italic>
-                    Week {week}
-                  </Text>
-                )}
                 <Box marginTop={2}>
                   <Heading accessibilityLevel={3} size="sm">
                     {title}
@@ -58,6 +60,12 @@ const VideoContainer = ({ public_id, title, description, week }) => {
                 </Box>
                 <Box marginTop={2}>
                   <Text color="gray">{description}</Text>
+                </Box>
+
+                <Box marginTop={2}>
+                  <Text color="gray" size="sm" italic>
+                    {createdWhenLabel}
+                  </Text>
                 </Box>
               </Box>
               <Box paddingX={1}>

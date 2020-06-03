@@ -9,12 +9,12 @@ module.exports.createPages = async ({ actions, graphql }) => {
         edges {
           node {
             public_id
-            created_at(fromNow: true)
             context {
               custom {
                 alt
                 caption
                 week
+                created_at
               }
             }
           }
@@ -35,7 +35,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
         public_id: node.public_id,
         title: node.context && node.context.custom.caption,
         description: node.context && node.context.custom.alt,
-        created_at: node.created_at,
+        created_at: node.context.custom.created_at,
         week: node.context.custom.week
       },
     })

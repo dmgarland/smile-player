@@ -25,21 +25,20 @@ const Layout = ({ children }) => {
       <Container>
         <main>
           <InstallBanner />
-          <Box padding={6}>{children}</Box>
+          <Box paddingX={6}>{children}</Box>
         </main>
-        <footer>
-          <Box padding={3}>
-            <Text color="gray" align="center">
-              Brought to you by{" "}
-              <Link
-                href="http://www.shapeshifter-productions.com"
-                inline
-              >
-                Shapeshifter Productions Ltd.
-              </Link>
-            </Text>
-          </Box>
-        </footer>
+        <Box color="darkWash" position="absolute" bottom left width="100%">
+          <footer>
+            <Box padding={3} marginLeft="auto" marginRight="auto">
+              <Text color="gray" align="center">
+                Brought to you by{" "}
+                <Link href="http://www.shapeshifter-productions.com" inline>
+                  Shapeshifter Productions Ltd.
+                </Link>
+              </Text>
+            </Box>
+          </footer>
+        </Box>
         <Update />
       </Container>
     </>
@@ -47,7 +46,7 @@ const Layout = ({ children }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout

@@ -11,9 +11,6 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Heading accessibilityLevel={2} paddingY={2} size="sm" color="orange">
-        Available Songs
-      </Heading>
       {videos.map(({ node }, index) => (
         <VideoContainer
           key={index}

@@ -9,7 +9,8 @@ import {
   Flyout,
   Text,
   Button,
-  Container
+  Container,
+  Image,
 } from "gestalt"
 import logo from "../images/sunshine-fading.svg"
 
@@ -18,78 +19,97 @@ const Header = ({ siteTitle }) => {
   const anchorRef = React.useRef()
 
   return (
-    <header>
-      <Container>
-        <Box display="flex" justifyContent="between" alignItems="center">
-          <img alt={siteTitle} height={80} width={80} src={logo} />
-
+    <>
+      <header>
+        <Container>
           <Link
             to="/"
             style={{
-              textDecoration: `none`
+              textDecoration: `none`,
             }}
           >
-            <Heading align="center" accessibilityLevel={1} size="sm">
-              {siteTitle}
-            </Heading>
+            <Image
+              alt={siteTitle}
+              naturalHeight={80}
+              naturalWidth={80}
+              src={logo}
+              fit="contain"
+            >
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                direction="column"
+                wrap="true"
+                column={6}
+                marginLeft="auto"
+                marginRight="auto"
+              >
+                <Heading align="center" accessibilityLevel={1} size="md">
+                  {siteTitle}
+                </Heading>
+              </Box>
+            </Image>
           </Link>
+        </Container>
+      </header>
 
-          <Box paddingX={2}>
-            <Box display="inlineBlock" ref={anchorRef}>
-              <IconButton
-                accessibilityLabel="Love Us? Donate!"
-                icon="heart"
-                iconColor="red"
-                size="lg"
-                accessibilityExpanded={!!donateVisible}
-                accessibilityHaspopup
-                onClick={() => {
-                  setDonateVisible(!donateVisible)
-                }}
-              />
-              {donateVisible && (
-                <Layer>
-                  <Flyout
-                    anchor={anchorRef.current}
-                    idealDirection="down"
-                    onDismiss={() => setDonateVisible(false)}
-                    positionRelativeToAnchor={true}
-                    size="md"
+      <Box color="darkWash">
+        <Container>
+          <Box display="inlineBlock" ref={anchorRef}>
+            <IconButton
+              accessibilityLabel="Love Us? Donate!"
+              size="lg"
+              icon="heart"
+              iconColor="red"
+              accessibilityExpanded={!!donateVisible}
+              accessibilityHaspopup
+              onClick={() => {
+                setDonateVisible(!donateVisible)
+              }}
+            />
+            {donateVisible && (
+              <Layer>
+                <Flyout
+                  anchor={anchorRef.current}
+                  idealDirection="down"
+                  onDismiss={() => setDonateVisible(false)}
+                  positionRelativeToAnchor={true}
+                  size="md"
+                >
+                  <Box
+                    padding={3}
+                    display="flex"
+                    alignItems="center"
+                    direction="column"
+                    column={12}
                   >
-                    <Box
-                      padding={3}
-                      display="flex"
-                      alignItems="center"
-                      direction="column"
-                      column={12}
-                    >
-                      <Text align="center" weight="bold">
-                        Enjoying our videos? Please donate to help support us to
-                        bring new songs to more care homes near you.
-                      </Text>
-                      <Box paddingX={2} marginTop={3}>
-                        <a href="https://www.paypal.me/shapeshifterprod">
-                          <Button color="blue" text="Donate via PayPal" />
-                        </a>
-                      </Box>
+                    <Text align="center" weight="bold">
+                      Enjoying our videos? Please donate to help support us to
+                      bring new songs to more care homes near you.
+                    </Text>
+                    <Box paddingX={2} marginTop={3}>
+                      <a href="https://www.paypal.me/shapeshifterprod">
+                        <Button color="blue" text="Donate via PayPal" />
+                      </a>
                     </Box>
-                  </Flyout>
-                </Layer>
-              )}
-            </Box>
+                  </Box>
+                </Flyout>
+              </Layer>
+            )}
           </Box>
-        </Box>
-      </Container>
-    </header>
+        </Container>
+      </Box>
+    </>
   )
 }
 
 Header.propTypes = {
-  siteTitle: PropTypes.string
+  siteTitle: PropTypes.string,
 }
 
 Header.defaultProps = {
-  siteTitle: ``
+  siteTitle: ``,
 }
 
 export default Header

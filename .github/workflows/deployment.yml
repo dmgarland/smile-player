@@ -16,8 +16,6 @@ jobs:
         uses: jzweifel/gatsby-cli-github-action@master
         with:
           gatsby-arg: build
-      - name: sanity check
-        run: ls
       - name: Deploy to Greenman 
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:

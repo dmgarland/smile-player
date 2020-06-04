@@ -5,11 +5,11 @@ import { Heading, Button, Box, Text } from "gestalt"
 import { Link } from "gatsby"
 
 export default ({ pageContext }) => {
-  const { public_id, title, description, created_at } = pageContext
+    const { public_id, title, description, created_at, week } = pageContext
 
   return (
     <Layout>
-      <Box marginBottom={6}>
+          <Box marginBottom={6} marginTop={6}>
         <Heading accessibilityLevel={1} paddingY={6}>
           {title}
         </Heading>
@@ -30,7 +30,7 @@ export default ({ pageContext }) => {
         <Text>{description}</Text>
         <Box marginTop={2}>
           <Text color="gray" italic>
-            Added {created_at}
+          Week { week } - {created_at}
           </Text>
         </Box>
       </Box>

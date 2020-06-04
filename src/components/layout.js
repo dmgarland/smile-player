@@ -2,8 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
+import Menu from "./menu"
 import InstallBanner from "./install-banner"
-import { Box, Container, Text, Link } from "gestalt"
+import { Box, Text, Link } from "gestalt"
 import "./layout.css"
 import "gestalt/dist/gestalt.css"
 import Update from "./update"
@@ -23,6 +24,7 @@ const Layout = ({ children }) => {
     <div id="page-container">
       <div id="content-wrap">
         <Header siteTitle={data.site.siteMetadata.title} />
+        <Menu />
         <main>
           <InstallBanner />
           <Box paddingX={3}>{children}</Box>

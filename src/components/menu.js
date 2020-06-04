@@ -1,0 +1,75 @@
+import PropTypes from "prop-types"
+import React, { useState } from "react"
+import {
+  Box,
+  IconButton,
+  Layer,
+  Flyout,
+  Text,
+  Button,
+  Container,
+} from "gestalt"
+
+const Menu = () => {
+  const [donateVisible, setDonateVisible] = useState(false)
+  const anchorRef = React.useRef()
+
+  return (
+      <Box color="darkWash">
+        <Container>
+          <Box display="inlineBlock" ref={anchorRef}>
+            <IconButton
+              accessibilityLabel="Love Us? Donate!"
+              size="lg"
+              icon="heart"
+              iconColor="red"
+              accessibilityExpanded={!!donateVisible}
+              accessibilityHaspopup
+              onClick={() => {
+                setDonateVisible(!donateVisible)
+              }}
+            />
+            {donateVisible && (
+              <Layer>
+                <Flyout
+                  anchor={anchorRef.current}
+                  idealDirection="down"
+                  onDismiss={() => setDonateVisible(false)}
+                  positionRelativeToAnchor={true}
+                  size="md"
+                >
+                  <Box
+                    padding={3}
+                    display="flex"
+                    alignItems="center"
+                    direction="column"
+                    column={12}
+                  >
+                    <Text align="center" weight="bold">
+                      Enjoying our videos? Please donate to help support us to
+                      bring new songs to more care homes near you.
+                    </Text>
+                    <Box paddingX={2} marginTop={3}>
+                      <a href="https://www.paypal.me/shapeshifterprod">
+                        <Button color="blue" text="Donate via PayPal" />
+                      </a>
+                    </Box>
+                  </Box>
+                </Flyout>
+              </Layer>
+            )}
+          </Box>
+        </Container>
+      </Box>
+  )
+}
+
+Menu.propTypes = {
+  siteTitle: PropTypes.string,
+}
+
+Menu.defaultProps = {
+  siteTitle: ``,
+}
+
+export default Menu

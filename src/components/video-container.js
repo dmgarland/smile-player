@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { Video, Transformation } from "cloudinary-react"
-import { Heading, Button, Box, Text, Card } from "gestalt"
+import { Heading, IconButton, Box, Text, Card } from "gestalt"
 import DownloadButton from "./download-button"
 import useCache from "../hooks/cache"
 
@@ -37,6 +37,7 @@ const VideoContainer = ({
       <Box color="white" borderSize="sm" mdPadding={2} rounding={3}>
         <Card
           image={
+                  <Link to={`/${public_id}`}>
             <Video
               crossOrigin="anonymous"
               cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
@@ -48,8 +49,9 @@ const VideoContainer = ({
             >
               <Transformation videoCodec="auto" quality={70} />
             </Video>
-          }
-        >
+                    </Link>
+            }
+            >
           <Link to={`/${public_id}`}>
             <Box alignItems="start" direction="row" display="flex" padding={3}>
               <Box marginTop={-1} paddingX={1} flex="grow">
@@ -69,9 +71,8 @@ const VideoContainer = ({
                 </Box>
               </Box>
               <Box paddingX={1}>
-                <Button
-                  text="Play"
-                  iconEnd="play"
+                <IconButton
+                  icon="play"
                   inline
                   type="submit"
                   accessibilityLabel="Play"

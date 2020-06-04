@@ -23,7 +23,7 @@ const InstallBanner = () => {
       <div id="install-banner">
         <Sticky top={0}>
           <Banner setVisible={setVisible}>
-            <Box marginRight={6} flex="grow">
+            <Box marginRight={6} marginTop={2} flex="grow">
               <Text color="white">
                 Enjoy your songs offline using our free app!
               </Text>

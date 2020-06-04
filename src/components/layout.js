@@ -20,28 +20,26 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <Container>
+    <div id="page-container">
+      <div id="content-wrap">
+        <Header siteTitle={data.site.siteMetadata.title} />
         <main>
           <InstallBanner />
-          <Box paddingX={6}>{children}</Box>
+          <Box paddingX={3}>{children}</Box>
         </main>
-        <Box color="darkWash" position="absolute" bottom left width="100%">
-          <footer>
-            <Box padding={3} marginLeft="auto" marginRight="auto">
-              <Text color="gray" align="center">
-                Brought to you by{" "}
-                <Link href="http://www.shapeshifter-productions.com" inline>
-                  Shapeshifter Productions Ltd.
-                </Link>
-              </Text>
-            </Box>
-          </footer>
+      </div>
+      <footer>
+        <Box padding={6} color="darkWash">
+          <Text color="gray" align="center">
+            Brought to you by{" "}
+            <Link href="http://www.shapeshifter-productions.com" inline>
+              Shapeshifter Productions
+            </Link>
+          </Text>
         </Box>
-        <Update />
-      </Container>
-    </>
+      </footer>
+      <Update />
+    </div>
   )
 }
 

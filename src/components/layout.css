@@ -1,18 +1,19 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  height: 100%;
 }
 
 body {
   background: #e2e2e2;
-  font-family: Calibri, sans-serif !important;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif !important;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 main {
+    background: #E2E2E2;
+ 
     }
 
 a {
@@ -51,3 +52,18 @@ header  div {
 footer {
 }
 
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 5rem;    /* Footer height */
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+}

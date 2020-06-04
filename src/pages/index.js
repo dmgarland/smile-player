@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import { Container } from "gestalt"
 import VideoContainer from "../components/video-container"
 import SEO from "../components/seo"
 
@@ -10,6 +11,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
+          <Container>
       {videos.map(({ node }, index) => (
         <VideoContainer
           key={index}
@@ -20,6 +22,7 @@ const IndexPage = ({ data }) => {
           week={node.context.custom.week}
         />
       ))}
+      </Container>
     </Layout>
   )
 }

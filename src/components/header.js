@@ -40,7 +40,7 @@ const Header = ({ siteTitle }) => {
                 justifyContent="center"
                 alignItems="center"
                 direction="column"
-                wrap="true"
+                wrap={true}
                 column={6}
                 marginLeft="auto"
                 marginRight="auto"

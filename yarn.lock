@@ -6048,9 +6048,9 @@ gensync@^1.0.0-beta.1:
   integrity sha512-r8EC6NO1sngH/zdD9fiRDLdcgnbayXah+mLgManTaIZJqEC1MZstmnox8KpnI2/fxQwrp5OpCOYWLp4rBl4Jcg==
 
 gestalt@^1.46.1:
-  version "1.46.1"
-  resolved "https://registry.yarnpkg.com/gestalt/-/gestalt-1.46.1.tgz#be87e2e0b61bc10527a11b61e3b8ee5640d59ade"
-  integrity sha512-fDEfYZwjhgDru7xO5VQ96ILC1YMavUm+6nJJ5uoHw7NTFBSgVh0U7sHe0pk7EUm2ko+Af7GVQH4WFdYRhKafzw==
+  version "1.62.0"
+  resolved "https://registry.yarnpkg.com/gestalt/-/gestalt-1.62.0.tgz#cddd175bf74522ab85c44a7caea279b56afa632f"
+  integrity sha512-Lz0oSt9Ya/6CkqAwOvuzl+51daLh8kzGV8npbJb5JvoxCFZrcHgPcSuttL+5yTDw1HRkHs4qhPC2dJTwiWXYdQ==
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.7.2"

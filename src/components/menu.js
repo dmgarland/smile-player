@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import {
@@ -15,8 +16,9 @@ const Menu = () => {
   const anchorRef = React.useRef()
 
   return (
-      <Box color="darkWash">
-        <Container>
+    <Box color="darkWash">
+      <Container>
+        <Box display="flex" justifyContent="between" alignItems="center">
           <Box display="inlineBlock" ref={anchorRef}>
             <IconButton
               accessibilityLabel="Love Us? Donate!"
@@ -59,8 +61,17 @@ const Menu = () => {
               </Layer>
             )}
           </Box>
-        </Container>
-      </Box>
+
+          <Box paddingX={3}>
+            <Link to="/about-smiling-sessions">
+              <Text inline color="darkGray">
+                About Smiling Sessions
+              </Text>
+            </Link>
+          </Box>
+        </Box>
+      </Container>
+    </Box>
   )
 }
 

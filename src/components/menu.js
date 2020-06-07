@@ -8,7 +8,7 @@ import {
   Flyout,
   Text,
   Button,
-  Container,
+  Container
 } from "gestalt"
 
 const Menu = () => {
@@ -65,7 +65,7 @@ const Menu = () => {
           <Box paddingX={3}>
             <Link to="/about-smiling-sessions">
               <Text inline color="darkGray">
-                About Smiling Sessions
+                About
               </Text>
             </Link>
           </Box>
@@ -76,11 +76,11 @@ const Menu = () => {
 }
 
 Menu.propTypes = {
-  siteTitle: PropTypes.string,
+  siteTitle: PropTypes.string
 }
 
 Menu.defaultProps = {
-  siteTitle: ``,
+  siteTitle: ``
 }
 
 export default Menu

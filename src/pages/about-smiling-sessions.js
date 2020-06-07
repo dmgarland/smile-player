@@ -2,16 +2,15 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Container, Heading, Box, Text, Table, Image, Button } from "gestalt"
-
 const About = () => (
   <Layout>
     <SEO title="About Smiling Sessions" />
     <Container>
       <Box paddingY={6}>
         <Heading>About Smiling Sessions</Heading>
-        <Box marginTop={3}>
+        <Box marginTop={8}>
           <Image
-            src="https://res.cloudinary.com/shapeshifter-productions/video/upload/v1591220106/iumwqmuhpuajasu5krnp.jpg"
+            src="/images/you-are-my-sunshine.jpg"
             alt="The Smiling Sessions Players performing You Are My Sunshine"
             naturalWidth={1920}
             naturalHeight={1080}

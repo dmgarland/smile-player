@@ -2,15 +2,22 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Container, Heading, Box, Text, Table, Image, Button } from "gestalt"
-const About = () => (
+import image from "../images/about.jpg"
+import { Image as GatsbyImage, graphql } from "gatsby"
+
+const About = ({ aboutImage, location }) => (
   <Layout>
-    <SEO title="About Smiling Sessions" />
+    <SEO
+      title="About Smiling Sessions"
+      description="The Smiling Sessions are weekly video songs to reach isolated and vulnerable senior citizens in care homes featuring celebrity musicians"
+      imageUrl={location.origin + image}
+    />
     <Container>
       <Box paddingY={6}>
         <Heading>About Smiling Sessions</Heading>
         <Box marginTop={8}>
           <Image
-            src="/images/you-are-my-sunshine.jpg"
+            src={image}
             alt="The Smiling Sessions Players performing You Are My Sunshine"
             naturalWidth={1920}
             naturalHeight={1080}
@@ -26,11 +33,8 @@ const About = () => (
             </p>
 
             <p>
-              We thought we’d make the sing-alongs public so everyone can join!
               Singing is good for the brain, immune system, respiratory system
-              and general well-being, to name a few benefits-oh yes -and it’s
-              fun! A win-win situation, so please share this App with friends
-              and family :-)
+              and general well-being, to name a few benefits - and it’s fun!
             </p>
 
             <p>
@@ -57,23 +61,24 @@ const About = () => (
               <Table.Body>
                 <Table.Row>
                   <Table.Cell>
-                    <Text>Bluetooth Speakers</Text>
+                    <Text>One month of phone calls</Text>
                   </Table.Cell>
-                  <Table.Cell>£10-£30</Table.Cell>
+                  <Table.Cell>£15</Table.Cell>
                   <Table.Cell>
-                    To play the music in the corridors of care homes
+                    To care homes and sheltered housing schemes
                   </Table.Cell>
                 </Table.Row>
 
                 <Table.Row>
                   <Table.Cell>
-                    <Text>Earphones</Text>
+                    <Text>Bluetooth Speakers</Text>
                   </Table.Cell>
-                  <Table.Cell>£20</Table.Cell>
+                  <Table.Cell>£20-£30</Table.Cell>
                   <Table.Cell>
                     To play the music in the corridors of care homes
                   </Table.Cell>
                 </Table.Row>
+
                 <Table.Row>
                   <Table.Cell>
                     <Text>Tablets</Text>
@@ -89,9 +94,11 @@ const About = () => (
               or a lot. Anything helps. Thank you for your support. The Smiling
               Team :-)
             </p>
+          </Text>
 
+          <Text align="center">
             <a href="https://www.paypal.me/shapeshifterprod">
-              <Button color="blue" text="Donate via PayPal" />
+              <Button color="blue" text="Donate via PayPal" inline />
             </a>
           </Text>
         </Box>
@@ -101,3 +108,15 @@ const About = () => (
 )
 
 export default About
+
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "src/images/about.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`

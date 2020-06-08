@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Smiling Sessions`,
     description: `The Smiling Sessions App provides a mobile video experience that puts a smile on your face`,
-    author: `Dan Garland`,
+    author: `@ShapeshifterE17`,
   },
   plugins: [
     {
@@ -17,7 +17,7 @@ module.exports = {
         apiSecret: process.env.CLOUDINARY_API_SECRET,
         resourceType: `video`,
         context: true,
-        tags: true
+        tags: true,
       },
     },
     {

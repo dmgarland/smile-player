@@ -1,121 +1,149 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Container, Heading, Box, Text, Table, Image, Button } from "gestalt"
-import image from "../images/about.jpg"
-import { Image as GatsbyImage, graphql } from "gatsby"
+import { Container, Heading, Box, Text, Table, Button, Link } from "gestalt"
+import { graphql } from "gatsby"
+import Image from "gatsby-image"
 
-const About = ({ aboutImage, location }) => (
-  <Layout>
-    <SEO
-      title="About Smiling Sessions"
-      description="The Smiling Sessions are weekly video songs to reach isolated and vulnerable senior citizens in care homes featuring celebrity musicians"
-      imageUrl={location.origin + image}
-    />
-    <Container>
-      <Box paddingY={6}>
-        <Heading>About Smiling Sessions</Heading>
-        <Box marginTop={8}>
-          <Image
-            src={image}
-            alt="The Smiling Sessions Players performing You Are My Sunshine"
-            naturalWidth={1920}
-            naturalHeight={1080}
-          />
-          <Text>
-            <p>
-              The Smiling Sessions sing alongs are being created as weekly video
-              songs (with on screen lyrics) to reach our most isolated and
-              vulnerable senior citizens in care homes and sheltered/supported
-              housing schemes. The aim is to lift spirits, increase morale and
-              well-being during these difficult times through connecting and
-              singing.
-            </p>
+const About = ({ data, location }) => {
+  const image = data.file.childImageSharp.fluid
+  const donationUrl = data.site.siteMetadata.donationUrl
 
-            <p>
-              Singing is good for the brain, immune system, respiratory system
-              and general well-being, to name a few benefits - and it’s fun!
-            </p>
+  return (
+    <Layout>
+      <SEO
+        title="About Smiling Sessions"
+        description="The Smiling Sessions are weekly video songs to reach isolated and vulnerable senior citizens in care homes featuring celebrity musicians"
+        imageUrl={location.origin + image}
+      />
+      <Container>
+        <Box paddingY={6}>
+          <Heading>About Smiling Sessions</Heading>
+          <Box marginTop={8}>
+            <Image
+              fluid={image}
+              alt="The Smiling Sessions Players performing You Are My Sunshine"
+            />
+            <Text>
+              <p>
+                For 10 years, The Smiling Sessions have offered participatory,
+                high quality singing experiences for senior citizens in care
+                homes and sheltered housing in deprived areas of London, helping
+                them become more integrated and stay healthy and active. Now, in
+                these unprecedented times, we are keener than ever to harness
+                the power of music and singing to support their wellbeing and
+                mental health, not only in London but across the U.K., Ireland
+                and beyond!{" "}
+              </p>
 
-            <p>
-              If you value the work of Shapeshifter Productions, please consider
-              supporting us at this time with a donation. Here’s a few examples
-              of what’s needed:
-            </p>
+              <p>
+                The weekly Smiling video sessions is our way of reaching out in
+                a safe, remote way – many residents are completely confined to
+                one small room 24/7. We want to help keep their spirits up and
+                let them know we’re thinking about them.
+              </p>
 
-            <Table>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>
-                    <Text weight="bold">Equipment</Text>
-                  </Table.HeaderCell>
-                  <Table.HeaderCell>
-                    <Text weight="bold">Cost</Text>
-                  </Table.HeaderCell>
-                  <Table.HeaderCell>
-                    <Text weight="bold">Purpose</Text>
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
+              <p>
+                The sessions are filmed by our fabulous musicians and the
+                occasional celebrity guest and created as videos (with on screen
+                lyrics) which we upload to the app every Monday. The videos are
+                building a library of 15 songs a set that can be used over and
+                over as a download or for streaming. Set 2 will start in
+                September.
+              </p>
+              <p>
+                We hope our weekly singalong sessions will increase morale and
+                well-being for isolated and older people during these difficult
+                times.
+              </p>
+              <p>
+                Please consider supporting us at this time. We want to sing,
+                connect and communicate with as many vulnerable and isolated
+                older people as possible.{" "}
+                <Link href={donationUrl}>Click here</Link> to make a donation.
+              </p>
 
-              <Table.Body>
-                <Table.Row>
-                  <Table.Cell>
-                    <Text>One month of phone calls</Text>
-                  </Table.Cell>
-                  <Table.Cell>£15</Table.Cell>
-                  <Table.Cell>
-                    To care homes and sheltered housing schemes
-                  </Table.Cell>
-                </Table.Row>
+              <Table>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>
+                      <Text weight="bold">Equipment</Text>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>
+                      <Text weight="bold">Cost</Text>
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>
+                      <Text weight="bold">Purpose</Text>
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
 
-                <Table.Row>
-                  <Table.Cell>
-                    <Text>Bluetooth Speakers</Text>
-                  </Table.Cell>
-                  <Table.Cell>£20-£30</Table.Cell>
-                  <Table.Cell>
-                    To play the music in the corridors of care homes
-                  </Table.Cell>
-                </Table.Row>
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Cell>
+                      <Text>One month of phone calls</Text>
+                    </Table.Cell>
+                    <Table.Cell>£15</Table.Cell>
+                    <Table.Cell>
+                      To care homes and sheltered housing schemes
+                    </Table.Cell>
+                  </Table.Row>
 
-                <Table.Row>
-                  <Table.Cell>
-                    <Text>Tablets</Text>
-                  </Table.Cell>
-                  <Table.Cell>£30-£50</Table.Cell>
-                  <Table.Cell>To play the videos</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+                  <Table.Row>
+                    <Table.Cell>
+                      <Text>Bluetooth Speakers</Text>
+                    </Table.Cell>
+                    <Table.Cell>£20-£30</Table.Cell>
+                    <Table.Cell>
+                      To play the music in the corridors of care homes
+                    </Table.Cell>
+                  </Table.Row>
 
-            <p>
-              Your contribution will make an impact, whether you donate a little
-              or a lot. Anything helps. Thank you for your support. The Smiling
-              Team :-)
-            </p>
-          </Text>
+                  <Table.Row>
+                    <Table.Cell>
+                      <Text>Tablets</Text>
+                    </Table.Cell>
+                    <Table.Cell>£30-£50</Table.Cell>
+                    <Table.Cell>To play the videos</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
+              <p>
+                Your contribution will make an impact, whether you donate a
+                little or a lot. Anything helps.{" "}
+              </p>
 
-          <Text align="center">
-            <a href="https://www.paypal.me/shapeshifterprod">
-              <Button color="blue" text="Donate via PayPal" inline />
-            </a>
-          </Text>
+              <p> Thank you for your support. </p>
+
+              <p> The Smiling Team :-)</p>
+            </Text>
+
+            <Text align="center">
+              <a href={donationUrl}>
+                <Button color="blue" text="Donate via PayPal" inline />
+              </a>
+            </Text>
+          </Box>
         </Box>
-      </Box>
-    </Container>
-  </Layout>
-)
+      </Container>
+    </Layout>
+  )
+}
 
 export default About
 
 export const query = graphql`
   query {
-    file(relativePath: { eq: "src/images/about.jpg" }) {
+    file(relativePath: { eq: "about.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid
         }
+      }
+    }
+    site {
+      siteMetadata {
+        donationUrl
       }
     }
   }

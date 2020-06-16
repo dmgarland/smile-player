@@ -11,7 +11,7 @@ import {
   Container
 } from "gestalt"
 
-const Menu = () => {
+const Menu = ({ donationUrl }) => {
   const [donateVisible, setDonateVisible] = useState(false)
   const anchorRef = React.useRef()
 
@@ -52,7 +52,7 @@ const Menu = () => {
                       bring new songs to more care homes near you.
                     </Text>
                     <Box paddingX={2} marginTop={3}>
-                      <a href="https://www.paypal.me/shapeshifterprod">
+                      <a href={donationUrl}>
                         <Button color="blue" text="Donate via PayPal" />
                       </a>
                     </Box>
@@ -76,11 +76,6 @@ const Menu = () => {
 }
 
 Menu.propTypes = {
-  siteTitle: PropTypes.string
+  donationUrl: PropTypes.string
 }
-
-Menu.defaultProps = {
-  siteTitle: ``
-}
-
 export default Menu

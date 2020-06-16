@@ -15,6 +15,8 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+          donationUrl
+          homepageUrl
         }
       }
     }
@@ -24,7 +26,7 @@ const Layout = ({ children }) => {
     <div id="page-container">
       <div id="content-wrap">
         <Header siteTitle={data.site.siteMetadata.title} />
-        <Menu />
+        <Menu donationUrl={data.site.siteMetadata.donationUrl} />
         <main>
           <InstallBanner />
           <Box paddingX={3}>{children}</Box>
@@ -34,7 +36,7 @@ const Layout = ({ children }) => {
         <Box padding={6} color="darkWash">
           <Text color="gray" align="center">
             Brought to you by{" "}
-            <Link href="http://www.shapeshifter-productions.com" inline>
+            <Link href={data.site.siteMetadata.homepageUrl} inline>
               Shapeshifter Productions
             </Link>
           </Text>
@@ -46,7 +48,7 @@ const Layout = ({ children }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default Layout

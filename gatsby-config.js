@@ -8,6 +8,7 @@ module.exports = {
     description: `The Smiling Sessions App provides a mobile video experience that puts a smile on your face`,
     author: `@ShapeshifterE17`,
     donationUrl: "https://www.paypal.me/shapeshifterprod",
+    homepageUrl: "http://www.shapeshifter-productions.com",
   },
   plugins: [
     {

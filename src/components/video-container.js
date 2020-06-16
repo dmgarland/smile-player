@@ -5,6 +5,7 @@ import { Video, Transformation } from "cloudinary-react"
 import { Heading, IconButton, Box, Text, Card } from "gestalt"
 import DownloadButton from "./download-button"
 import useCache from "../hooks/cache"
+import { slug } from "../utils/slug"
 
 const VideoContainer = ({
   public_id,
@@ -40,7 +41,7 @@ const VideoContainer = ({
       <Box color="white" borderSize="sm" mdPadding={2} rounding={3}>
         <Card
           image={
-            <Link to={`/${public_id}`}>
+            <Link to={`/${slug(public_id)}`}>
               <Video
                 crossOrigin="anonymous"
                 cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
@@ -55,7 +56,7 @@ const VideoContainer = ({
             </Link>
           }
         >
-          <Link to={`/${public_id}`}>
+          <Link to={`/${slug(public_id)}`}>
             <Box alignItems="start" direction="row" display="flex" padding={3}>
               <Box marginTop={-1} paddingX={1} flex="grow">
                 <Box marginTop={2}>

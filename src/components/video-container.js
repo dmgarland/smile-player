@@ -11,7 +11,7 @@ const VideoContainer = ({
   title,
   description,
   week,
-  created_at,
+  created_at
 }) => {
   const [downloadURL, setDownloadURL] = useState(null)
   const htmlVideoRef = React.createRef()
@@ -24,7 +24,10 @@ const VideoContainer = ({
   }, [htmlVideoRef])
 
   const is_cached = cached.find(result => result.match(new RegExp(public_id)))
-  const createdWhenLabel = [week ? `Week ${week}` : "", created_at].join(" - ")
+  const createdWhen = []
+  if (week) createdWhen.push(`Week ${week}`)
+  if (created_at) createdWhen.push(created_at)
+  const createdWhenLabel = createdWhen.join(" - ")
 
   return (
     <Box
@@ -37,21 +40,21 @@ const VideoContainer = ({
       <Box color="white" borderSize="sm" mdPadding={2} rounding={3}>
         <Card
           image={
-                  <Link to={`/${public_id}`}>
-            <Video
-              crossOrigin="anonymous"
-              cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
-              publicId={public_id}
-              innerRef={htmlVideoRef}
-              preload="metadata"
-              width="100%"
-              secure="true"
-            >
-              <Transformation videoCodec="auto" quality={70} />
-            </Video>
-                    </Link>
-            }
-            >
+            <Link to={`/${public_id}`}>
+              <Video
+                crossOrigin="anonymous"
+                cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
+                publicId={public_id}
+                innerRef={htmlVideoRef}
+                preload="metadata"
+                width="100%"
+                secure="true"
+              >
+                <Transformation videoCodec="auto" quality={70} />
+              </Video>
+            </Link>
+          }
+        >
           <Link to={`/${public_id}`}>
             <Box alignItems="start" direction="row" display="flex" padding={3}>
               <Box marginTop={-1} paddingX={1} flex="grow">
@@ -101,9 +104,9 @@ VideoContainer.propTypes = {
   public_id: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
-  created_at: PropTypes.string,
+  created_at: PropTypes.string
 }
 
 VideoContainer.defaultProps = {
-  title: "No Title",
+  title: "No Title"
 }

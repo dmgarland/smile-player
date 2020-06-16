@@ -10,6 +10,11 @@ export default ({ pageContext, location }) => {
   const image = `https://res.cloudinary.com/${
     process.env.GATSBY_CLOUDINARY_CLOUD_NAME
   }/video/upload/t_media_lib_thumb/${public_id}.jpg`
+  const createdWhen = []
+  if (week) createdWhen.push(`Week ${week}`)
+  if (created_at) createdWhen.push(created_at)
+  const createdWhenLabel = createdWhen.join(" - ")
+
   return (
     <Layout>
       <SEO
@@ -38,11 +43,11 @@ export default ({ pageContext, location }) => {
         </Video>
 
         <Box paddingY={6}>
-          <Text>{description}</Text>
+          <Text color="gray" italic>
+            {createdWhenLabel}
+          </Text>
           <Box marginTop={2}>
-            <Text color="gray" italic>
-              Week {week} - {created_at}
-            </Text>
+            <Text>{description}</Text>
           </Box>
         </Box>
         <Box paddingY={6}>

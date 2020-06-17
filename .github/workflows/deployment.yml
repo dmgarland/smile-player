@@ -13,6 +13,7 @@ jobs:
           CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
           GATSBY_CLOUDINARY_CLOUD_NAME: ${{ secrets.GATSBY_CLOUDINARY_CLOUD_NAME }}
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
         uses: jzweifel/gatsby-cli-github-action@master
         with:
           gatsby-arg: build

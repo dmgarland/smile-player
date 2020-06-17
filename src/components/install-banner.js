@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Banner from "./banner"
-import { Sticky, Text, Button, Box } from "gestalt"
+import { Container, Sticky, Text, Button, Box } from "gestalt"
 
 const InstallBanner = () => {
   const [installEvent, setInstallEvent] = useState(null)
@@ -22,27 +22,29 @@ const InstallBanner = () => {
     visible && (
       <div id="install-banner">
         <Sticky top={0}>
-          <Banner setVisible={setVisible}>
-            <Box marginRight={6} flex="grow">
-              <Text color="white">
-                Enjoy your songs offline using our free app!
-              </Text>
-            </Box>
-            <Box paddingX={3}>
-              <Button
-                text="Install"
-                inline
-                onClick={e => {
-                  installEvent.prompt()
-                  installEvent.userChoice.then(choice => {
-                    if (choice.outcome === "accepted") {
-                    } else {
-                    }
-                  })
-                }}
-              />
-            </Box>
-          </Banner>
+          <Container>
+            <Banner setVisible={setVisible}>
+              <Box marginRight={6} flex="grow">
+                <Text color="white">
+                  Enjoy your songs offline using our free app!
+                </Text>
+              </Box>
+              <Box paddingX={3}>
+                <Button
+                  text="Install"
+                  inline
+                  onClick={e => {
+                    installEvent.prompt()
+                    installEvent.userChoice.then(choice => {
+                      if (choice.outcome === "accepted") {
+                      } else {
+                      }
+                    })
+                  }}
+                />
+              </Box>
+            </Banner>
+          </Container>
         </Sticky>
       </div>
     )

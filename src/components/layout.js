@@ -35,9 +35,15 @@ const Layout = ({ children }) => {
       </div>
       <footer>
         <Box padding={6} color="darkWash">
-          <Box display="flex" alignItems="center" justifyContent="center" marginBottom={12}>
+          <Box display="flex" alignItems="center" justifyContent="between" marginBottom={12} width="50%" marginLeft="auto" marginRight="auto">
           <OutboundLink href="https://twitter.com/ShapeshifterE17">
           <Icon icon="twitter" accessibilityLabel="Follow us on Twitter"/>
+          </OutboundLink>
+          <OutboundLink href="https://www.facebook.com/shapeshifterproductions/">
+          <Icon icon="facebook" accessiblityLabel="Follow us on Facebook" />
+          </OutboundLink>
+          <OutboundLink href="https://www.instagram.com/shapeshifter_productions/">
+          <Icon icon="camera" accessibilityLabel="Follow us on Instagram" />
           </OutboundLink>
           </Box>
 

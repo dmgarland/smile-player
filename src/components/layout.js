@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import Menu from "./menu"
 import InstallBanner from "./install-banner"
-import { Box, Text, Link, Icon } from "gestalt"
+import { Box, Text, Icon } from "gestalt"
 import "./layout.css"
 import "gestalt/dist/gestalt.css"
 import Update from "./update"
@@ -37,13 +37,13 @@ const Layout = ({ children }) => {
         <Box padding={6} color="darkWash">
           <Box display="flex" alignItems="center" justifyContent="center" marginBottom={12}>
           <OutboundLink href="https://twitter.com/ShapeshifterE17">
-          <Icon icon="twitter" />
+          <Icon icon="twitter" accessibilityLabel="Follow us on Twitter"/>
           </OutboundLink>
           </Box>
 
           <Text color="gray" align="center">
             Brought to you by{" "}
-            <OutboundLink href={data.site.siteMetadata.homepageUrl} inline>
+            <OutboundLink href={data.site.siteMetadata.homepageUrl} >
               <Text color="gray" inline>Shapeshifter Productions</Text>
             </OutboundLink>
           </Text>

@@ -47,6 +47,10 @@ function SEO({ description, lang, meta, title, imageUrl }) {
       property: `og:type`,
       content: `website`
     },
+      {
+          property: `og:url`,
+          content: window.location.href
+      },
     {
       name: `twitter:card`,
       content: `summary`

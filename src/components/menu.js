@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
-import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+// import { trackCustomEvent } from "gatsby-plugin-gtag"
 import {
   Box,
   IconButton,
@@ -31,11 +31,17 @@ const Menu = ({ donationUrl }) => {
               onClick={() => {
                 const action = donateVisible ? "Close" : "Open"
                 setDonateVisible(!donateVisible)
-                trackCustomEvent({
-                  category: `Heart Button`,
-                  label: `${action} Donation Flyout`,
-                  action: "Click"
-                })
+                // trackCustomEvent({
+                //   category: `Heart Button`,
+                //   label: `${action} Donation Flyout`,
+                //   action: "Click"
+                // })
+                  if(window.gtag) {
+                      window.gtag('event', 'Click', {
+                      'event_category': 'Heart Button',
+                      'event_label': `${action} Donation Flyout`,
+                  });
+                  }
               }}
             />
             {donateVisible && (

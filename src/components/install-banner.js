@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Banner from "./banner"
 import { Container, Sticky, Text, Button, Box } from "gestalt"
+// import { trackCustomEvent } from "gatsby-plugin-gtag"
 
 const InstallBanner = () => {
   const [installEvent, setInstallEvent] = useState(null)
@@ -37,7 +38,29 @@ const InstallBanner = () => {
                     installEvent.prompt()
                     installEvent.userChoice.then(choice => {
                       if (choice.outcome === "accepted") {
+                          // trackCustomEvent({
+                          //     category: `Install Button`,
+                          //     label: `Installed`,
+                          //     action: "Click"
+                          // })
+
+                          if(window.gtag) {
+                              window.gtag('event', 'Installed', {
+                                  'event_category': 'Install Button',
+                              });
+                          }
                       } else {
+                          // trackCustomEvent({
+                          //     category: `Install Button`,
+                          //     label: `Declined Installation`,
+                          //     action: "Click"
+                          // })
+
+                          if(window.gtag) {
+                              window.gtag('event', 'Installed', {
+                                  'event_category': 'Install Button',
+                              });
+                          }
                       }
                     })
                   }}

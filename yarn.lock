@@ -841,6 +841,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.10.3":
+  version "7.10.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.3.tgz#670d002655a7c366540c67f6fd3342cd09500364"
+  integrity sha512-RzGO0RLSdokm9Ipe/YD+7ww8X2Ro79qiXZF3HU9ljrM+qnJmH1Vqth+hbiQZy761LnMJTMitHDuKVYTk3k4dLw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/standalone@^7.9.5":
   version "7.9.5"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.9.5.tgz#aba82195a39a8ed8ae56eacff72cf2bda551a7c3"
@@ -5749,6 +5756,13 @@ gatsby-plugin-sharp@^2.5.7:
     sharp "^0.25.1"
     svgo "1.3.2"
     uuid "^3.4.0"
+
+gatsby-plugin-twitter@^2.3.6:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-twitter/-/gatsby-plugin-twitter-2.3.6.tgz#ea7856b27ad4efeb1d23b930b6203c60a0ff5f76"
+  integrity sha512-0UO0tS7q2jzPvWCcQIGpJq8o34185uAdCXNLTVGRX7gmSCF6w0AdJu8KNRx/eZK+z5yfnULgNAoB3cE4T4HcQQ==
+  dependencies:
+    "@babel/runtime" "^7.10.3"
 
 gatsby-react-router-scroll@^2.2.3:
   version "2.2.3"

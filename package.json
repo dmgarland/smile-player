@@ -13,6 +13,7 @@
     "gatsby-plugin-offline": "^3.1.5",
     "gatsby-plugin-react-helmet": "^3.2.5",
     "gatsby-plugin-sharp": "^2.5.7",
+    "gatsby-plugin-twitter": "^2.3.6",
     "gatsby-source-cloudinary": "^0.1.13",
     "gatsby-source-filesystem": "^2.2.5",
     "gatsby-transformer-sharp": "^2.4.7",

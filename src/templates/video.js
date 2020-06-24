@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import { Heading, Button, Box, Text, Container } from "gestalt"
 import { Link } from "gatsby"
 import SEO from "../components/seo"
+import TwitterLink from "../components/twitter-link"
 
 export default ({ pageContext, location }) => {
   const { public_id, title, description, created_at, week } = pageContext
@@ -42,6 +43,10 @@ export default ({ pageContext, location }) => {
           <Transformation videoCodec="auto" quality={70} />
         </Video>
 
+          <Box paddingY={3}>
+          <TwitterLink text={`I thought you'd enjoy this performance of "${title}" on Smiling Sessions. Share the smiles!`} url={location.href} via="ShapeshifterE17">Share on Twitter</TwitterLink>
+          </Box>
+
         <Box paddingY={6}>
           <Text color="gray" italic>
             {createdWhenLabel}
@@ -50,6 +55,7 @@ export default ({ pageContext, location }) => {
             <Text>{description}</Text>
           </Box>
         </Box>
+
         <Box paddingY={6}>
           <Link to="/">
             <Button text="Back" type="submit" inline />

@@ -21,7 +21,7 @@ export default ({ pageContext, location }) => {
       <SEO
         title={title}
         description={description}
-        location={location.origin}
+        location={location.href}
         imageUrl={image}
       />
 

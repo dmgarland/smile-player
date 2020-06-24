@@ -16,6 +16,7 @@ const IndexPage = ({ data, location }) => {
         title={metadata.title}
         description={metadata.description}
         imageUrl={location.origin + logo}
+      location={location.href}
       />
       <Container>
         {videos.map(({ node }, index) => (

@@ -1,7 +1,8 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
-
+// import { trackCustomEvent } from "gatsby-plugin-gtag"
+import Basket from "./basket"
 import {
   Box,
   IconButton,
@@ -11,7 +12,7 @@ import {
   Container,
   Sticky,
   Divider,
-  Icon,
+  Icon
 } from "gestalt"
 
 const Menu = ({ donationUrl }) => {
@@ -42,7 +43,7 @@ const Menu = ({ donationUrl }) => {
                   if (window.gtag) {
                     window.gtag("event", "Click", {
                       event_category: "Heart Button",
-                      event_label: `${action} Donation Flyout`,
+                      event_label: `${action} Donation Flyout`
                     })
                   }
                 }}
@@ -75,17 +76,18 @@ const Menu = ({ donationUrl }) => {
                       </Text>
                     </Link>
                     <Divider />
-                    <a
-                      href="https://www.paypal.me/shapeshifterprod"
-                      className="menu-item"
-                    >
+                    <Link to="/donate" className="menu-item">
                       <Text color="darkGray" align="center">
                         Support Us <Icon icon="heart" inline />
                       </Text>
-                    </a>
+                    </Link>
                   </Box>
                 </Flyout>
               )}
+            </Box>
+
+            <Box padding={1}>
+              <Basket />
             </Box>
           </Box>
         </Container>
@@ -95,6 +97,6 @@ const Menu = ({ donationUrl }) => {
 }
 
 Menu.propTypes = {
-  donationUrl: PropTypes.string,
+  donationUrl: PropTypes.string
 }
 export default Menu

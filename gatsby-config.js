@@ -61,5 +61,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-twitter`,
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ["Product", "Price"],
+        secretKey: process.env.STRIPE_SECRET_KEY,
+        downloadFiles: false,
+      },
+    },
   ],
 }

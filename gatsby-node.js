@@ -1,5 +1,6 @@
 const path = require("path")
 const { slug } = require("./src/utils/slug")
+const { createRemoteFileNode } = require("gatsby-source-filesystem")
 
 module.exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
@@ -69,8 +70,16 @@ module.exports.createPages = async ({ actions, graphql }) => {
   })
 }
 
-module.exports.createSchemaCustomization = ({ actions }) => {
-  actions.createTypes(`
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type StripeProduct implements Node {
+      prices: [StripePrice] @link(by: "product", from: "id")
+    }
+    type StripePrice implements Node {
+      relatedProduct: StripeProduct @link(from: "product")
+    }
+
     type CloudinaryMediaContextCustom {
       alt: String!
       caption: String!
@@ -78,5 +87,31 @@ module.exports.createSchemaCustomization = ({ actions }) => {
       series: Int!
       created_at: String
     }
-  `)
+`
+  createTypes(typeDefs)
+}
+
+exports.onCreateNode = async ({
+  node,
+  actions: { createNode },
+  store,
+  cache,
+  createNodeId,
+}) => {
+  if (node.internal.type === "StripeProduct" && node.images.length) {
+    await Promise.all(
+      node.images.map(async url => {
+        let fileNode = await createRemoteFileNode({
+          url,
+          parentNodeId: node.id,
+          createNode,
+          createNodeId,
+          cache,
+          store,
+        })
+
+        if (fileNode) node.productImage___NODE = fileNode.id
+      })
+    )
+  }
 }

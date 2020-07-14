@@ -20,6 +20,7 @@ module.exports = {
         resourceType: `video`,
         context: true,
         tags: true,
+        maxResults: 50,
       },
     },
     {
@@ -53,12 +54,12 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-        resolve: `gatsby-plugin-gtag`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS_ID,
         anonymize: true,
       },
     },
-      `gatsby-plugin-twitter`
+    `gatsby-plugin-twitter`,
   ],
 }

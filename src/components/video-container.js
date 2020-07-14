@@ -26,7 +26,7 @@ const VideoContainer = ({
 
   const is_cached = cached.find(result => result.match(new RegExp(public_id)))
   const createdWhen = []
-  if (week) createdWhen.push(`Week ${week}`)
+  if (week) createdWhen.push(`Session ${week}`)
   if (created_at) createdWhen.push(created_at)
   const createdWhenLabel = createdWhen.join(" - ")
 
@@ -65,13 +65,12 @@ const VideoContainer = ({
                   </Heading>
                 </Box>
                 <Box marginTop={2}>
-                  <Text color="gray">{description}</Text>
-                </Box>
-
-                <Box marginTop={2}>
                   <Text color="gray" size="sm" italic>
                     {createdWhenLabel}
                   </Text>
+                </Box>
+                <Box marginTop={2}>
+                  <Text color="gray">{description}</Text>
                 </Box>
               </Box>
               <Box paddingX={1}>

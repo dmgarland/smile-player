@@ -16,19 +16,23 @@ const IndexPage = ({ data, location }) => {
         title={metadata.title}
         description={metadata.description}
         imageUrl={location.origin + logo}
-      location={location.href}
+        location={location.href}
       />
       <Container>
-        {videos.map(({ node }, index) => (
-          <VideoContainer
-            key={index}
-            public_id={node.public_id}
-            title={node.context && node.context.custom.caption}
-            description={node.context && node.context.custom.alt}
-            created_at={node.context.custom.created_at}
-            week={node.context.custom.week}
-          />
-        ))}
+        {videos
+          .sort(
+            (a, b) => b.node.context.custom.week - a.node.context.custom.week
+          )
+          .map(({ node }, index) => (
+            <VideoContainer
+              key={index}
+              public_id={node.public_id}
+              title={node.context && node.context.custom.caption}
+              description={node.context && node.context.custom.alt}
+              created_at={node.context.custom.created_at}
+              week={node.context.custom.week}
+            />
+          ))}
       </Container>
     </Layout>
   )

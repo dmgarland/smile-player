@@ -42,3 +42,14 @@ module.exports.createPages = async ({ actions, graphql }) => {
     })
   )
 }
+
+module.exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+    type CloudinaryMediaContextCustom {
+      alt: String!
+      caption: String!
+      week: Int!
+      created_at: String
+    }
+  `)
+}

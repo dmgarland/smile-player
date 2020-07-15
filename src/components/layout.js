@@ -8,7 +8,7 @@ import { Box, Text, Icon } from "gestalt"
 import "./layout.css"
 import "gestalt/dist/gestalt.css"
 import Update from "./update"
-import { OutboundLink } from 'gatsby-plugin-gtag'
+import { OutboundLink } from "gatsby-plugin-gtag"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,22 +35,35 @@ const Layout = ({ children }) => {
       </div>
       <footer>
         <Box padding={6} color="darkWash">
-          <Box display="flex" alignItems="center" justifyContent="between" marginBottom={12} width="50%" marginLeft="auto" marginRight="auto">
-          <OutboundLink href="https://twitter.com/ShapeshifterE17">
-          <Icon icon="twitter" accessibilityLabel="Follow us on Twitter"/>
-          </OutboundLink>
-          <OutboundLink href="https://www.facebook.com/shapeshifterproductions/">
-          <Icon icon="facebook" accessiblityLabel="Follow us on Facebook" />
-          </OutboundLink>
-          <OutboundLink href="https://www.instagram.com/shapeshifter_productions/">
-          <Icon icon="camera" accessibilityLabel="Follow us on Instagram" />
-          </OutboundLink>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="between"
+            marginBottom={12}
+            width="50%"
+            marginLeft="auto"
+            marginRight="auto"
+          >
+            <OutboundLink href="https://twitter.com/ShapeshifterE17">
+              <Icon icon="twitter" accessibilityLabel="Follow us on Twitter" />
+            </OutboundLink>
+            <OutboundLink href="https://www.facebook.com/shapeshifterproductions/">
+              <Icon
+                icon="facebook"
+                accessibilityLabel="Follow us on Facebook"
+              />
+            </OutboundLink>
+            <OutboundLink href="https://www.instagram.com/shapeshifter_productions/">
+              <Icon icon="camera" accessibilityLabel="Follow us on Instagram" />
+            </OutboundLink>
           </Box>
 
           <Text color="gray" align="center">
             Brought to you by{" "}
-            <OutboundLink href={data.site.siteMetadata.homepageUrl} >
-              <Text color="gray" inline>Shapeshifter Productions</Text>
+            <OutboundLink href={data.site.siteMetadata.homepageUrl}>
+              <Text color="gray" inline>
+                Shapeshifter Productions
+              </Text>
             </OutboundLink>
           </Text>
         </Box>

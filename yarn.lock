@@ -6066,10 +6066,10 @@ gensync@^1.0.0-beta.1:
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.1.tgz#58f4361ff987e5ff6e1e7a210827aa371eaac269"
   integrity sha512-r8EC6NO1sngH/zdD9fiRDLdcgnbayXah+mLgManTaIZJqEC1MZstmnox8KpnI2/fxQwrp5OpCOYWLp4rBl4Jcg==
 
-gestalt@^1.46.1:
-  version "1.62.0"
-  resolved "https://registry.yarnpkg.com/gestalt/-/gestalt-1.62.0.tgz#cddd175bf74522ab85c44a7caea279b56afa632f"
-  integrity sha512-Lz0oSt9Ya/6CkqAwOvuzl+51daLh8kzGV8npbJb5JvoxCFZrcHgPcSuttL+5yTDw1HRkHs4qhPC2dJTwiWXYdQ==
+gestalt@8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/gestalt/-/gestalt-8.2.1.tgz#d8b84c6030aeecfc172b1c9fd7f60777889192ac"
+  integrity sha512-sVdxS7eT/c83f9lE+sYpcCnFGMgXnSc3qHNBR0UrL6zVJFkbrRp3aDCyGEmQudfsIr4JrwPQO8D/dz4pZX4YQQ==
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.7.2"

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import Layout from "../components/layout"
 import { Heading, Button, Box, Text, Container } from "gestalt"
 import { Link, navigate } from "gatsby"
 import SEO from "../components/seo"
 import TwitterLink from "../components/twitter-link"
-import useCache from "../hooks/cache"
-import DownloadButton from "../components/download-button"
 import Playlist from "../components/playlist"
 import { Video, Transformation } from "cloudinary-react"
 import { slug } from "../utils/slug"
+import CreatedWhen from "../components/created-when"
+import VideoContext from "../context/video-context"
 
 export default ({ pageContext, location }) => {
   const {
@@ -21,26 +21,32 @@ export default ({ pageContext, location }) => {
     playlist,
     next
   } = pageContext
-  const cached = useCache()
-  const [downloadURL, setDownloadURL] = useState(null)
-  const htmlVideoRef = React.createRef()
-  useEffect(() => {
-    if (htmlVideoRef.current && htmlVideoRef.current.currentSrc) {
-      setDownloadURL(htmlVideoRef.current.currentSrc)
-    }
-  }, [htmlVideoRef])
+
   const playNext = () => {
     if (next) navigate(slug(next.public_id))
   }
 
-  const is_cached = cached.find(result => result.match(new RegExp(public_id)))
-  const image = `https://res.cloudinary.com/${
-    process.env.GATSBY_CLOUDINARY_CLOUD_NAME
-  }/video/upload/t_media_lib_thumb/${public_id}.jpg`
-  const createdWhen = []
-  if (week) createdWhen.push(`Week ${week}`)
-  if (created_at) createdWhen.push(created_at)
-  const createdWhenLabel = createdWhen.join(" - ")
+  const htmlVideoRef = useRef()
+
+  const [image, setImage] = useState()
+  const [baseUrl, setBaseUrl] = useState()
+  const [videoExtension, setVideoExtension] = useState()
+
+  useEffect(() => {
+    //   console.log("triggered")
+    //   if (htmlVideoRef.current && htmlVideoRef.current.currentSrc) {
+    setImage(htmlVideoRef.current.poster)
+    console.log(htmlVideoRef.current.poster)
+    const url = htmlVideoRef.current.currentSrc
+    console.log(url)
+    setBaseUrl(
+      url
+        .split("/")
+        .slice(0, -2)
+        .join("/")
+    )
+    setVideoExtension(url.split(".").slice(-1)[0])
+  }, [htmlVideoRef.current])
 
   return (
     <Layout>
@@ -57,20 +63,24 @@ export default ({ pageContext, location }) => {
             {title}
           </Heading>
         </Box>
+
         <Video
           crossOrigin="anonymous"
           controls
-          autoPlay="autoplay"
+          autoPlay
           cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
           publicId={public_id}
           secure={true}
           width="100%"
           onEnded={playNext}
+          innerRef={htmlVideoRef}
         >
           <Transformation videoCodec="auto" quality={70} />
         </Video>
         <aside>
-          <Playlist playlist={playlist} height={200} current_id={public_id} />
+          <VideoContext.Provider value={{ baseUrl, videoExtension }}>
+            <Playlist playlist={playlist} height={200} current_id={public_id} />
+          </VideoContext.Provider>
         </aside>
         <Box paddingY={3}>
           <TwitterLink
@@ -84,22 +94,13 @@ export default ({ pageContext, location }) => {
 
         <Box paddingY={6}>
           <Text color="gray" italic>
-            {createdWhenLabel}
+            <CreatedWhen week={week} created_at={created_at} />
           </Text>
           <Box marginTop={2}>
             <Text>{description}</Text>
           </Box>
         </Box>
 
-        <Box
-          alignItems="center"
-          alignContent="center"
-          justifyContent="center"
-          display="flex"
-          paddingY={3}
-        >
-          {!is_cached && <DownloadButton url={downloadURL} />}
-        </Box>
         <Box paddingY={6}>
           <Link to="/">
             <Button text="Back" type="submit" inline />

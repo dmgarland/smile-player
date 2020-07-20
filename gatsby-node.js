@@ -28,17 +28,21 @@ module.exports.createPages = async ({ actions, graphql }) => {
     console.error(result.errors)
   }
 
-  result.data.allCloudinaryMedia.edges.forEach(({ node }) =>
+  const playlist = result.data.allCloudinaryMedia.edges
+    .map(({ node }) => ({
+      public_id: node.public_id,
+      title: node.context && node.context.custom.caption,
+      description: node.context && node.context.custom.alt,
+      created_at: node.context.custom.created_at,
+      week: node.context.custom.week,
+    }))
+    .sort((a, b) => b.week - a.week)
+
+  playlist.forEach((item, index) =>
     createPage({
-      path: slug(node.public_id),
+      path: slug(item.public_id),
       component: path.resolve("src/templates/video.js"),
-      context: {
-        public_id: node.public_id,
-        title: node.context && node.context.custom.caption,
-        description: node.context && node.context.custom.alt,
-        created_at: node.context.custom.created_at,
-        week: node.context.custom.week,
-      },
+      context: { ...item, playlist, next: playlist[index + 1] },
     })
   )
 }

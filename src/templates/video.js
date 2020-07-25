@@ -33,12 +33,8 @@ export default ({ pageContext, location }) => {
   const [videoExtension, setVideoExtension] = useState()
 
   useEffect(() => {
-    //   console.log("triggered")
-    //   if (htmlVideoRef.current && htmlVideoRef.current.currentSrc) {
     setImage(htmlVideoRef.current.poster)
-    console.log(htmlVideoRef.current.poster)
     const url = htmlVideoRef.current.currentSrc
-    console.log(url)
     setBaseUrl(
       url
         .split("/")

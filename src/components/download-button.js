@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import PropTypes from "prop-types"
 import { Box, Text, Button, Icon } from "gestalt"
-import useCache from "../hooks/cache"
+import useCache, { isCached } from "../hooks/cache"
 import download from "../lib/download"
 import VideoContext from "../context/video-context"
+import { encodePublicId } from "../utils/public-id"
 
 const DownloadButton = ({ public_id }) => {
   const [isDownloading, setIsDownloading] = useState(false)
@@ -11,12 +12,12 @@ const DownloadButton = ({ public_id }) => {
   const [progress, setProgress] = useState(0)
   const cached = useCache()
   const { baseUrl, videoExtension } = useContext(VideoContext)
-  const encodedPublicId = public_id
-    .split("/")
-    .map(p => encodeURIComponent(p))
-    .join("/")
-  const url = `${baseUrl}/${encodedPublicId}.${videoExtension}`
-  const is_cached = cached.find(result => result.match(encodedPublicId))
+  const url = `${baseUrl}/${encodePublicId(public_id)}.${videoExtension}`
+  const [showButton, setShowButton] = useState(true)
+
+  useEffect(() => {
+    isCached(public_id).then(result => setShowButton(!!result))
+  }, [public_id])
 
   const onUpdate = progress => {
     setProgress(progress)
@@ -64,7 +65,7 @@ const DownloadButton = ({ public_id }) => {
     </Box>
   )
 
-  return is_cached || progress == 1
+  return showButton || progress == 1
     ? saved
     : isDownloading
     ? progressBar

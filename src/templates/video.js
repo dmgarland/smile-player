@@ -10,6 +10,20 @@ import { Video, Transformation } from "cloudinary-react"
 import { slug } from "../utils/slug"
 import CreatedWhen from "../components/created-when"
 import VideoContext from "../context/video-context"
+import useCache, { isCached } from "../hooks/cache"
+
+const makeIterator = (playlist, startIndex, cached) =>
+  async function* urls() {
+    for (let index = startIndex + 1; index < playlist.length; index++) {
+      const next = playlist[index]
+      const is_cached = await isCached(next.public_id)
+      console.log(is_cached)
+
+      if ((!navigator.onLine && is_cached) || navigator.onLine) {
+        yield next
+      }
+    }
+  }
 
 export default ({ pageContext, location }) => {
   const {
@@ -19,11 +33,16 @@ export default ({ pageContext, location }) => {
     created_at,
     week,
     playlist,
-    next
+    index
   } = pageContext
 
-  const playNext = () => {
-    if (next) navigate(slug(next.public_id))
+  const cached = useCache()
+  const urls = makeIterator(playlist, index, cached)
+
+  const playNext = async () => {
+    const next = await urls().next()
+
+    if (!next.done) navigate(slug(next.value.public_id))
   }
 
   const htmlVideoRef = useRef()

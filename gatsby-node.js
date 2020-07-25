@@ -42,7 +42,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: slug(item.public_id),
       component: path.resolve("src/templates/video.js"),
-      context: { ...item, playlist, next: playlist[index + 1] },
+      context: { ...item, playlist, index },
     })
   )
 }

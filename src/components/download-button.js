@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react"
 import PropTypes from "prop-types"
 import { Box, Text, Button, Icon } from "gestalt"
-import useCache, { isCached } from "../hooks/cache"
+import { isCached } from "../hooks/cache"
 import download from "../lib/download"
 import VideoContext from "../context/video-context"
 import { encodePublicId } from "../utils/public-id"
@@ -10,7 +10,6 @@ const DownloadButton = ({ public_id }) => {
   const [isDownloading, setIsDownloading] = useState(false)
   const [label, setLabel] = useState("Preparing...")
   const [progress, setProgress] = useState(0)
-  const cached = useCache()
   const { baseUrl, videoExtension } = useContext(VideoContext)
   const url = `${baseUrl}/${encodePublicId(public_id)}.${videoExtension}`
   const [showButton, setShowButton] = useState(true)

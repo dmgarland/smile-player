@@ -53,15 +53,22 @@ export default ({ pageContext, location }) => {
 
   useEffect(() => {
     setImage(htmlVideoRef.current.poster)
-    const url = htmlVideoRef.current.currentSrc
-    setBaseUrl(
-      url
-        .split("/")
-        .slice(0, -2)
-        .join("/")
-    )
-    setVideoExtension(url.split(".").slice(-1)[0])
-  }, [htmlVideoRef.current])
+    const setUrl = event => {
+      const url = htmlVideoRef.current.currentSrc
+      setBaseUrl(
+        url
+          .split("/")
+          .slice(0, -2)
+          .join("/")
+      )
+      setVideoExtension(url.split(".").slice(-1)[0])
+    }
+    htmlVideoRef.current.addEventListener("loadeddata", setUrl)
+
+    return () => {
+      htmlVideoRef.current.removeEventListener("loadeddata", setUrl)
+    }
+  }, [htmlVideoRef])
 
   return (
     <Layout>

@@ -33,7 +33,8 @@ export default ({ pageContext, location }) => {
     created_at,
     week,
     playlist,
-    index
+    index,
+    series,
   } = pageContext
 
   const cached = useCache()
@@ -55,12 +56,7 @@ export default ({ pageContext, location }) => {
     setImage(htmlVideoRef.current.poster)
     const setUrl = event => {
       const url = htmlVideoRef.current.currentSrc
-      setBaseUrl(
-        url
-          .split("/")
-          .slice(0, -2)
-          .join("/")
-      )
+      setBaseUrl(url.split("/").slice(0, -2).join("/"))
       setVideoExtension(url.split(".").slice(-1)[0])
     }
     htmlVideoRef.current.addEventListener("loadeddata", setUrl)
@@ -116,7 +112,7 @@ export default ({ pageContext, location }) => {
 
         <Box paddingY={6}>
           <Text color="gray" italic>
-            <CreatedWhen week={week} created_at={created_at} />
+            <CreatedWhen week={week} created_at={created_at} series={series} />
           </Text>
           <Box marginTop={2}>
             <Text>{description}</Text>

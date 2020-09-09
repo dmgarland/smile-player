@@ -11,10 +11,10 @@ const VideoContainer = ({
   title,
   description,
   week,
-  created_at
+  created_at,
 }) => (
   <Box
-    marginTop={6}
+    marginBottom={6}
     mdPadding={2}
     smColumn={12}
     mdColumn={6}
@@ -71,9 +71,9 @@ VideoContainer.propTypes = {
   public_id: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
-  created_at: PropTypes.string
+  created_at: PropTypes.string,
 }
 
 VideoContainer.defaultProps = {
-  title: "No Title"
+  title: "No Title",
 }

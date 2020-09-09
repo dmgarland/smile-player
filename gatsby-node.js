@@ -16,6 +16,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
                 caption
                 week
                 created_at
+                series
               }
             }
           }
@@ -28,23 +29,44 @@ module.exports.createPages = async ({ actions, graphql }) => {
     console.error(result.errors)
   }
 
-  const playlist = result.data.allCloudinaryMedia.edges
-    .map(({ node }) => ({
-      public_id: node.public_id,
-      title: node.context && node.context.custom.caption,
-      description: node.context && node.context.custom.alt,
-      created_at: node.context.custom.created_at,
-      week: node.context.custom.week,
-    }))
-    .sort((a, b) => b.week - a.week)
+  const transform = ({ node }) => ({
+    public_id: node.public_id,
+    title: node.context && node.context.custom.caption,
+    description: node.context && node.context.custom.alt,
+    created_at: node.context.custom.created_at,
+    week: node.context.custom.week,
+    series: parseInt(node.context.custom.series),
+  })
 
-  playlist.forEach((item, index) =>
+  const allSeries = [1, 2]
+  let playlist
+
+  allSeries.forEach(series => {
+    playlist = result.data.allCloudinaryMedia.edges
+      .map(transform)
+      .filter(node => node.series === series)
+      .sort((a, b) => b.week - a.week)
+
+    playlist.forEach((item, index) =>
+      createPage({
+        path: slug(item.public_id),
+        component: path.resolve("src/templates/video.js"),
+        context: { ...item, playlist, index, series },
+      })
+    )
+
     createPage({
-      path: slug(item.public_id),
-      component: path.resolve("src/templates/video.js"),
-      context: { ...item, playlist, index },
+      path: `series-${series}`,
+      component: path.resolve("src/templates/series.js"),
+      context: { playlist, series },
     })
-  )
+  })
+
+  createPage({
+    path: "/",
+    component: path.resolve("src/templates/series.js"),
+    context: { playlist, series: 2 },
+  })
 }
 
 module.exports.createSchemaCustomization = ({ actions }) => {
@@ -53,6 +75,7 @@ module.exports.createSchemaCustomization = ({ actions }) => {
       alt: String!
       caption: String!
       week: Int!
+      series: Int!
       created_at: String
     }
   `)

@@ -9,7 +9,7 @@ import {
   Flyout,
   Text,
   Button,
-  Container
+  Container,
 } from "gestalt"
 
 const Menu = ({ donationUrl }) => {
@@ -36,12 +36,12 @@ const Menu = ({ donationUrl }) => {
                 //   label: `${action} Donation Flyout`,
                 //   action: "Click"
                 // })
-                  if(window.gtag) {
-                      window.gtag('event', 'Click', {
-                      'event_category': 'Heart Button',
-                      'event_label': `${action} Donation Flyout`,
-                  });
-                  }
+                if (window.gtag) {
+                  window.gtag("event", "Click", {
+                    event_category: "Heart Button",
+                    event_label: `${action} Donation Flyout`,
+                  })
+                }
               }}
             />
             {donateVisible && (
@@ -76,6 +76,22 @@ const Menu = ({ donationUrl }) => {
           </Box>
 
           <Box paddingX={3}>
+            <Link to="/series-2">
+              <Text inline color="darkGray">
+                Series 2
+              </Text>
+            </Link>
+          </Box>
+
+          <Box paddingX={3}>
+            <Link to="/series-1">
+              <Text inline color="darkGray">
+                Series 1
+              </Text>
+            </Link>
+          </Box>
+
+          <Box paddingX={3}>
             <Link to="/about-smiling-sessions">
               <Text inline color="darkGray">
                 About
@@ -89,6 +105,6 @@ const Menu = ({ donationUrl }) => {
 }
 
 Menu.propTypes = {
-  donationUrl: PropTypes.string
+  donationUrl: PropTypes.string,
 }
 export default Menu

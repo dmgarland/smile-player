@@ -63,7 +63,7 @@ const Menu = ({ donationUrl }) => {
                       </Text>
                     </Link>
                     <Divider />
-                    <Link to="/" className="menu-item">
+                    <Link to="/series-1" className="menu-item">
                       <Text color="darkGray" align="center">
                         Series 1
                       </Text>

@@ -1,106 +1,95 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
-// import { trackCustomEvent } from "gatsby-plugin-gtag"
+
 import {
   Box,
   IconButton,
   Layer,
   Flyout,
   Text,
-  Button,
   Container,
+  Sticky,
+  Divider,
+  Icon,
 } from "gestalt"
 
 const Menu = ({ donationUrl }) => {
-  const [donateVisible, setDonateVisible] = useState(false)
+  const [menuVisible, setMenuVisible] = useState(false)
   const anchorRef = React.useRef()
 
   return (
-    <Box color="darkWash">
-      <Container>
-        <Box display="flex" justifyContent="between" alignItems="center">
-          <Box display="inlineBlock" ref={anchorRef}>
-            <IconButton
-              accessibilityLabel="Love Us? Donate!"
-              size="lg"
-              icon="heart"
-              iconColor="red"
-              accessibilityExpanded={!!donateVisible}
-              accessibilityHaspopup
-              onClick={() => {
-                const action = donateVisible ? "Close" : "Open"
-                setDonateVisible(!donateVisible)
-                // trackCustomEvent({
-                //   category: `Heart Button`,
-                //   label: `${action} Donation Flyout`,
-                //   action: "Click"
-                // })
-                if (window.gtag) {
-                  window.gtag("event", "Click", {
-                    event_category: "Heart Button",
-                    event_label: `${action} Donation Flyout`,
-                  })
-                }
-              }}
-            />
-            {donateVisible && (
-              <Layer>
+    <Sticky top={0}>
+      <Box color="darkWash" position="relative">
+        <Container>
+          <Box display="flex" justifyContent="between" alignItems="center">
+            <Box display="inlineBlock" ref={anchorRef} marginLeft={2}>
+              <IconButton
+                accessibilityLabel="Navigation Menu"
+                size="lg"
+                icon="menu"
+                accessibilityExpanded={!!menuVisible}
+                accessibilityHaspopup
+                text="Menu"
+                onClick={() => {
+                  const action = menuVisible ? "Close" : "Open"
+                  setMenuVisible(!menuVisible)
+                  // trackCustomEvent({
+                  //   category: `Heart Button`,
+                  //   label: `${action} Donation Flyout`,
+                  //   action: "Click"
+                  // })
+                  if (window.gtag) {
+                    window.gtag("event", "Click", {
+                      event_category: "Heart Button",
+                      event_label: `${action} Donation Flyout`,
+                    })
+                  }
+                }}
+              />
+              {menuVisible && (
                 <Flyout
                   anchor={anchorRef.current}
                   idealDirection="down"
-                  onDismiss={() => setDonateVisible(false)}
+                  onDismiss={() => setMenuVisible(false)}
                   positionRelativeToAnchor={true}
                   size="md"
                 >
-                  <Box
-                    padding={3}
-                    display="flex"
-                    alignItems="center"
-                    direction="column"
-                    column={12}
-                  >
-                    <Text align="center" weight="bold">
-                      Enjoying our videos? Please donate to help support us to
-                      bring new songs to more care homes near you.
-                    </Text>
-                    <Box paddingX={2} marginTop={3}>
-                      <a href={donationUrl}>
-                        <Button color="blue" text="Donate via PayPal" />
-                      </a>
-                    </Box>
+                  <Box display="flex" direction="column" column={12}>
+                    <Link to="/" className="menu-item">
+                      <Text color="darkGray" align="center">
+                        Series 2
+                      </Text>
+                    </Link>
+                    <Divider />
+                    <Link to="/" className="menu-item">
+                      <Text color="darkGray" align="center">
+                        Series 1
+                      </Text>
+                    </Link>
+                    <Divider />
+                    <Link to="/about-smiling-sessions" className="menu-item">
+                      <Text color="darkGray" align="center">
+                        About Us
+                      </Text>
+                    </Link>
+                    <Divider />
+                    <a
+                      href="https://www.paypal.me/shapeshifterprod"
+                      className="menu-item"
+                    >
+                      <Text color="darkGray" align="center">
+                        Support Us <Icon icon="heart" inline />
+                      </Text>
+                    </a>
                   </Box>
                 </Flyout>
-              </Layer>
-            )}
+              )}
+            </Box>
           </Box>
-
-          <Box paddingX={3}>
-            <Link to="/series-2">
-              <Text inline color="darkGray">
-                Series 2
-              </Text>
-            </Link>
-          </Box>
-
-          <Box paddingX={3}>
-            <Link to="/series-1">
-              <Text inline color="darkGray">
-                Series 1
-              </Text>
-            </Link>
-          </Box>
-
-          <Box paddingX={3}>
-            <Link to="/about-smiling-sessions">
-              <Text inline color="darkGray">
-                About
-              </Text>
-            </Link>
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+    </Sticky>
   )
 }
 

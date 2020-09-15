@@ -12,63 +12,74 @@ body {
 }
 
 main {
-    background: #E2E2E2;
- 
-    }
+  background: #e2e2e2;
+}
 
 a {
   text-decoration: none;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: Calibri, sans-serif !important;
   font-weight: bold;
 }
 
 @media all and (display-mode: minimal-ui) {
-  #install-banner { display: none }
+  #install-banner {
+    display: none;
+  }
 }
 
 @media all and (display-mode: standalone) {
-  #install-banner { display: none }
+  #install-banner {
+    display: none;
+  }
 }
 
-header  {
-    background: #FFF;
-    text-transform: uppercase;
-    height: 80px;
+header {
+  background: #fff;
+  text-transform: uppercase;
+  height: 80px;
 }
 
 header h1 {
-    color: #FFCC00 !important;
+  color: #ffcc00 !important;
 }
 
-header  div {
-    background-position: 13px !important;
-    height: 80px;
+header div {
+  background-position: 13px !important;
+  height: 80px;
 }
-
 
 footer {
 }
 
 #page-container {
-    position: relative;
-    min-height: 100vh;
+  position: relative;
+  min-height: 100vh;
 }
 
 #content-wrap {
-    padding-bottom: 5rem;    /* Footer height */
+  padding-bottom: 5rem; /* Footer height */
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
 
 .menu-item {
-    padding: 12px;
-    display: block;
+  padding: 12px;
+  display: block;
+}
+
+#main-menu {
+  z-index: 100;
 }

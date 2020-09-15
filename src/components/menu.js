@@ -54,6 +54,7 @@ const Menu = ({ donationUrl }) => {
                   onDismiss={() => setMenuVisible(false)}
                   positionRelativeToAnchor={true}
                   size="md"
+                  id="main-menu"
                 >
                   <Box display="flex" direction="column" column={12}>
                     <Link to="/" className="menu-item">

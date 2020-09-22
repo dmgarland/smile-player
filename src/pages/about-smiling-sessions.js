@@ -33,7 +33,7 @@ const About = ({ data, location }) => {
                 these unprecedented times, we are keener than ever to harness
                 the power of music and singing to support their wellbeing and
                 mental health, not only in London but across the U.K., Ireland
-                and beyond!{" "}
+                and beyond!
               </p>
 
               <p>
@@ -44,22 +44,26 @@ const About = ({ data, location }) => {
               </p>
 
               <p>
-                The sessions are filmed by our fabulous musicians and the
-                occasional celebrity guest and created as videos (with on screen
-                lyrics) which we upload to the app every Monday. The videos are
-                building a library of 15 songs a set that can be used over and
-                over as a download or for streaming. Set 2 will start in
-                September.
+                The sessions are filmed by our fabulous musicians and celebrity
+                guests, created as videos (with on screen lyrics) which we
+                upload to the app every Monday. The videos are building a video
+                juke box of 15 songs a series that can be used over and over as
+                a download or for streaming.
               </p>
               <p>
-                We hope our weekly singalong sessions will increase morale and
-                well-being for isolated and older people during these difficult
-                times.
+                Series 2 is now underway, taking us up to the festive season and
+                we hope you continue to enjoy singing the songs! Knowing how
+                singing can really impact on improving health and well-being,
+                while reducing stress, blood pressure and much more, we hope our
+                weekly singalong sessions will also increase the morale of
+                everyone out there who is isolated during these difficult times.
               </p>
               <p>
-                Please consider supporting us at this time. We want to sing,
-                connect and communicate with as many vulnerable and isolated
-                older people as possible.{" "}
+                We want to sing, connect and communicate with as many vulnerable
+                and isolated people as possible-whatever their age!
+              </p>
+              <p>
+                If you would like to support this project, please{" "}
                 <Link href={donationUrl}>Click here</Link> to make a donation.
               </p>
 

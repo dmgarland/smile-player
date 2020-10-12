@@ -74,8 +74,8 @@ module.exports.createSchemaCustomization = ({ actions }) => {
     type CloudinaryMediaContextCustom {
       alt: String!
       caption: String!
-      week: Int!
-      series: Int!
+      week: Int
+      series: Int
       created_at: String
     }
   `)

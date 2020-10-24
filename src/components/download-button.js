@@ -64,11 +64,19 @@ const DownloadButton = ({ public_id }) => {
     </Box>
   )
 
-  return showButton || progress == 1
-    ? saved
-    : isDownloading
-    ? progressBar
-    : button
+  if (showButton || progress === 1) {
+    return saved
+  }
+
+  if (isDownloading) {
+    return progressBar
+  }
+
+  if (baseUrl && videoExtension) {
+    return button
+  }
+
+  return null
 }
 
 export default DownloadButton

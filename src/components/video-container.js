@@ -11,7 +11,7 @@ const VideoContainer = ({
   title,
   description,
   week,
-  created_at,
+  created_at
 }) => (
   <Box
     marginBottom={6}
@@ -20,7 +20,7 @@ const VideoContainer = ({
     mdColumn={6}
     display="inlineBlock"
   >
-    <Box color="white" borderSize="sm" mdPadding={2} rounding={3}>
+    <Box color="white" borderStyle="sm" mdPadding={2} rounding={3}>
       <Card
         image={
           <Link to={`/${slug(public_id)}`}>
@@ -71,9 +71,9 @@ VideoContainer.propTypes = {
   public_id: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
-  created_at: PropTypes.string,
+  created_at: PropTypes.string
 }
 
 VideoContainer.defaultProps = {
-  title: "No Title",
+  title: "No Title"
 }

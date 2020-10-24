@@ -1,22 +1,48 @@
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
+import useCurrentSession from "../hooks/use-current-session"
 
 import {
   Box,
   IconButton,
-  Layer,
+  Button,
   Flyout,
   Text,
   Container,
   Sticky,
   Divider,
-  Icon,
+  Icon
 } from "gestalt"
 
 const Menu = ({ donationUrl }) => {
   const [menuVisible, setMenuVisible] = useState(false)
+  const { session, signOut } = useCurrentSession()
   const anchorRef = React.useRef()
+
+  const signOutLink = (
+    <>
+      <Divider />
+      <div
+        className="menu-item"
+        onClick={async () => {
+          await signOut()
+          setMenuVisible(false)
+          navigate("/")
+        }}
+      >
+        <Text color="darkGray" align="center">
+          Sign out{" "}
+          <Icon
+            icon="logout"
+            accessibilityLabel="Logout Icon"
+            inline
+            color="darkGray"
+          />
+        </Text>
+      </div>
+    </>
+  )
 
   return (
     <Sticky top={0}>
@@ -42,7 +68,7 @@ const Menu = ({ donationUrl }) => {
                   if (window.gtag) {
                     window.gtag("event", "Click", {
                       event_category: "Heart Button",
-                      event_label: `${action} Donation Flyout`,
+                      event_label: `${action} Donation Flyout`
                     })
                   }
                 }}
@@ -74,19 +100,20 @@ const Menu = ({ donationUrl }) => {
                         About Us
                       </Text>
                     </Link>
-                    <Divider />
-                    <a
-                      href="https://www.paypal.me/shapeshifterprod"
-                      className="menu-item"
-                    >
-                      <Text color="darkGray" align="center">
-                        Support Us <Icon icon="heart" inline />
-                      </Text>
-                    </a>
+
+                    {session && signOutLink}
                   </Box>
                 </Flyout>
               )}
             </Box>
+            <Button
+              color="blue"
+              text="Support Us"
+              iconEnd="heart"
+              inline
+              href={donationUrl}
+              role="link"
+            />
           </Box>
         </Container>
       </Box>
@@ -95,6 +122,6 @@ const Menu = ({ donationUrl }) => {
 }
 
 Menu.propTypes = {
-  donationUrl: PropTypes.string,
+  donationUrl: PropTypes.string
 }
 export default Menu

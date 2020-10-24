@@ -8,9 +8,11 @@ import "gestalt/dist/gestalt.css"
 import { slug } from "../utils/slug"
 import CreatedWhen from "./created-when"
 import DownloadButton from "../components/download-button"
+import useCurrentSession from "../hooks/use-current-session"
 
 const PlaylistRow = ({ public_id, title, week, created_at, active }) => {
   const containerRef = useRef()
+  const { session } = useCurrentSession()
 
   useLayoutEffect(() => {
     const element = containerRef.current
@@ -27,7 +29,7 @@ const PlaylistRow = ({ public_id, title, week, created_at, active }) => {
       <Box
         className={active ? "borderColorRed" : "borderColorGray"}
         color="darkGray"
-        borderSize="sm"
+        borderStyle="sm"
         display="flex"
         direction="row"
         wrap
@@ -63,7 +65,7 @@ const PlaylistRow = ({ public_id, title, week, created_at, active }) => {
             height="100%"
             padding={3}
           >
-            <DownloadButton public_id={public_id} />
+            {session && <DownloadButton public_id={public_id} />}
           </Row>
         </Column>
       </Box>

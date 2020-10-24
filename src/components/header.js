@@ -1,58 +1,50 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import {
-  Box,
-  Heading,
-  Container,
-  Image,
-} from "gestalt"
+import { Box, Button, Heading, Container, Column, Text } from "gestalt"
 import logo from "../images/sunshine-fading.svg"
+import useCurrentSession from "../hooks/use-current-session"
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, donationUrl, setShowAuth }) => {
+  const { session } = useCurrentSession()
+  const welcome = session ? (
+    <Text>Welcome {session && session.name}</Text>
+  ) : (
+    <Button onClick={() => setShowAuth(true)} size="sm" text="Sign in" />
+  )
+
   return (
-      <header>
-        <Container>
-          <Link
-            to="/"
-            style={{
-              textDecoration: `none`,
-            }}
-          >
-            <Image
-              alt={siteTitle}
-              naturalHeight={80}
-              naturalWidth={80}
-              src={logo}
-              fit="contain"
-            >
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                direction="column"
-                wrap={true}
-                column={6}
-                marginLeft="auto"
-                marginRight="auto"
-              >
-                <Heading align="center" accessibilityLevel={1} size="md">
-                  {siteTitle}
-                </Heading>
-              </Box>
-            </Image>
+    <header>
+      <Container>
+        <Box
+          display="flex"
+          direction="row"
+          justifyContent="between"
+          alignItems="center"
+        >
+          <Link to="/">
+            <img className="logo" src={logo} />
           </Link>
-        </Container>
-      </header>
+
+          <Link to="/">
+            <Heading align="center" accessibilityLevel={1} size="md">
+              {siteTitle}
+            </Heading>
+          </Link>
+
+          <div>{welcome}</div>
+        </Box>
+      </Container>
+    </header>
   )
 }
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  siteTitle: PropTypes.string
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteTitle: ``
 }
 
 export default Header

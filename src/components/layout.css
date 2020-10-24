@@ -43,17 +43,21 @@ h6 {
 
 header {
   background: #fff;
-  text-transform: uppercase;
   height: 80px;
 }
 
 header h1 {
   color: #ffcc00 !important;
+  text-transform: uppercase;
 }
 
-header div {
-  background-position: 13px !important;
-  height: 80px;
+header a {
+    text-decoration: none;
+}
+
+.logo {
+    max-height: 80px;
+    max-width: 80px;
 }
 
 footer {
@@ -73,11 +77,14 @@ footer {
   bottom: 0;
   width: 100%;
   height: 2.5rem;
+  text-align: center;
 }
 
 .menu-item {
+    text-align: center;
   padding: 12px;
   display: block;
+  cursor: pointer;
 }
 
 #main-menu {

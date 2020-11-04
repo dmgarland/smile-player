@@ -95,6 +95,13 @@ const Menu = ({ donationUrl }) => {
                       </Text>
                     </Link>
                     <Divider />
+                    <Link to="/privacy" className="menu-item">
+                      <Text color="darkGray" align="center">
+                        Privacy Policy
+                      </Text>
+                    </Link>
+
+                    <Divider />
                     <Link to="/about-smiling-sessions" className="menu-item">
                       <Text color="darkGray" align="center">
                         About Us

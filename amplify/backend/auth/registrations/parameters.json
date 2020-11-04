@@ -27,7 +27,8 @@
     "custom:address2",
     "custom:county",
     "custom:postcode",
-    "custom:country"
+    "custom:country",
+    "custom:tcs_agreed",
   ],
   "userpoolClientReadAttributes": ["email", "name", "email_verified"],
   "userpoolClientLambdaRole": "regist57fca71d_userpoolclient_lambda_role",

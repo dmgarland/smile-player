@@ -160,7 +160,6 @@ Resources:
           Name: email
           Required: true
           Mutable: true
-        
         -
           Name: name
           Required: true
@@ -194,6 +193,11 @@ Resources:
           Name: country
           Required: false
           Mutable: true
+          AttributeDataType: String
+        -
+          Name: tcs_agreed
+          Required: false
+          Mutable: false
           AttributeDataType: String
       
       AutoVerifiedAttributes: !Ref autoVerifiedAttributes

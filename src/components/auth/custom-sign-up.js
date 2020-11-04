@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import { SignUp, PhoneField } from "aws-amplify-react"
 import CustomPhoneField from "./custom-phone-field"
 import {
@@ -11,6 +12,7 @@ import {
   Checkbox,
   Divider
 } from "gestalt"
+import Privacy from "../privacy"
 
 class CustomSignUp extends SignUp {
   constructor(props) {
@@ -86,11 +88,23 @@ class CustomSignUp extends SignUp {
           .map(field => field.label)
       )
     }
+
+    if (!this.state.tcs_agreed) {
+      invalids.push("Terms and Conditions")
+    }
     return invalids
   }
 
   needPrefix(key) {
     return false
+  }
+
+  handleInputChange(evt) {
+    this.inputs = this.inputs || {}
+    const { name, value, type, checked } = evt.target
+    const check_type = ["radio", "checkbox"].includes(type)
+    this.inputs[name] = check_type ? "" + checked : value
+    this.inputs["checkedValue"] = check_type ? value : null
   }
 
   showComponent(theme) {
@@ -103,7 +117,6 @@ class CustomSignUp extends SignUp {
               Register for Free
             </Heading>
           </Box>
-
           <Box marginBottom={3}>
             <TextField
               id="name"
@@ -123,7 +136,6 @@ class CustomSignUp extends SignUp {
               label="Email"
               type="email"
               name="email"
-              autoFocus={true}
               onChange={e => {
                 this.handleInputChange(e.event)
               }}
@@ -141,9 +153,47 @@ class CustomSignUp extends SignUp {
               }}
             />
           </Box>
-
           <Box marginBottom={3}>
             <CustomPhoneField onChangeText={this.onPhoneNumberChanged} />
+          </Box>
+          {this.state.showPrivacy && (
+            <Box
+              height={300}
+              overflow="scrollY"
+              borderStyle="sm"
+              padding={3}
+              marginBottom={3}
+            >
+              <Heading size="sm" accessibilityLevel={3}>
+                Privacy and Data Protection Policy
+              </Heading>
+              <Privacy />
+            </Box>
+          )}
+          <Box marginBottom={3}>
+            <Checkbox
+              id="tcs_agreed"
+              name="custom:tcs_agreed"
+              label={
+                <Text>
+                  I agree for my data to be processed in accordance with our{" "}
+                  <a
+                    href="/privacy"
+                    onClick={e => {
+                      e.preventDefault()
+                      this.setState({ showPrivacy: !this.state.showPrivacy })
+                    }}
+                  >
+                    privacy policy
+                  </a>
+                </Text>
+              }
+              onChange={({ event, checked }) => {
+                this.setState({ tcs_agreed: checked })
+                this.handleInputChange(event)
+              }}
+              checked={this.state.tcs_agreed}
+            />
           </Box>
           <Box marginBottom={3}>
             <Checkbox
@@ -157,7 +207,6 @@ class CustomSignUp extends SignUp {
               }
             />
           </Box>
-
           {this.state.showCareHomeFields &&
             this.careHomeFields.map(({ component: Component, label, key }) => (
               <Box marginBottom={3} key={key}>
@@ -171,7 +220,6 @@ class CustomSignUp extends SignUp {
                 />
               </Box>
             ))}
-
           <Box marginBottom={6} justifyContent="center" display="flex">
             <Button
               inline
@@ -182,7 +230,6 @@ class CustomSignUp extends SignUp {
             />
           </Box>
           <Divider />
-
           <Box paddingY={3}>
             <Text>
               <a

@@ -17,6 +17,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
                 week
                 created_at
                 series
+                go_live
               }
             }
           }
@@ -35,7 +36,8 @@ module.exports.createPages = async ({ actions, graphql }) => {
     description: node.context && node.context.custom.alt,
     created_at: node.context.custom.created_at,
     week: node.context.custom.week,
-    series: parseInt(node.context.custom.series),
+    go_live: node.context.custom.go_live,
+    series: parseInt(node.context.custom.series)
   })
 
   const allSeries = [1, 2]
@@ -51,21 +53,21 @@ module.exports.createPages = async ({ actions, graphql }) => {
       createPage({
         path: slug(item.public_id),
         component: path.resolve("src/templates/video.js"),
-        context: { ...item, playlist, index, series },
+        context: { ...item, playlist, index, series }
       })
     )
 
     createPage({
       path: `series-${series}`,
       component: path.resolve("src/templates/series.js"),
-      context: { playlist, series },
+      context: { playlist, series }
     })
   })
 
   createPage({
     path: "/",
     component: path.resolve("src/templates/series.js"),
-    context: { playlist, series: 2 },
+    context: { playlist, series: 2 }
   })
 }
 
@@ -76,6 +78,7 @@ module.exports.createSchemaCustomization = ({ actions }) => {
       caption: String!
       week: Int
       series: Int
+      go_live: String
       created_at: String
     }
   `)

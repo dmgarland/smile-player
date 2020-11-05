@@ -13,6 +13,7 @@ import VideoContext from "../context/video-context"
 import useCache, { isCached } from "../hooks/cache"
 import { Image } from "cloudinary-react"
 import useCurrentSession from "../hooks/use-current-session"
+import Countdown from "../components/countdown"
 
 const makeIterator = (playlist, startIndex, cached) =>
   async function* urls() {
@@ -33,11 +34,12 @@ export default ({ pageContext, location }) => {
     description,
     created_at,
     week,
+    go_live,
     playlist,
     index,
     series
   } = pageContext
-
+  const go_live_date = go_live && new Date(Date.parse(go_live))
   const cached = useCache()
   const urls = makeIterator(playlist, index, cached)
 
@@ -71,8 +73,13 @@ export default ({ pageContext, location }) => {
   )
 
   const videoPlayer = <VideoPlayer public_id={public_id} playNext={playNext} />
-
   const media = session || offline ? videoPlayer : imagePlaceholder
+  const countdown = (
+    <Countdown to={go_live_date} placeholder={imagePlaceholder}>
+      {media}
+    </Countdown>
+  )
+  const content = go_live ? countdown : media
 
   useEffect(() => {
     if (posterRef.current) setImage(posterRef.current.src)
@@ -96,7 +103,7 @@ export default ({ pageContext, location }) => {
               {title}
             </Heading>
           </Box>
-          {media}
+          {content}
           <aside>
             <Playlist playlist={playlist} height={200} current_id={public_id} />
           </aside>

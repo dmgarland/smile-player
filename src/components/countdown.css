@@ -1,0 +1,13 @@
+.countdown-container {
+}
+
+.countdown {
+    font-size: 5em;
+    text-align: center;
+    font-family: monospace, serif;
+}
+
+.countdown-container h5 {
+    font-size: 12px !important;
+    text-transform: uppercase;
+}

@@ -66,12 +66,11 @@ export default () => (
             anonymised.
           </li>
           <li>
-            Special category data means personal information revealing racial or
-            ethnic origin, political opinions, religious or philosophical
-            beliefs, trade union membership, genetic data, biometric data for
-            the purpose of uniquely identifying an individual, data concerning
-            health or data concerning an individual’s sex life or sexual
-            orientation.
+            Special category data is personal data that needs more protection
+            because it is sensitive. For more information, please see:{" "}
+            <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/special-category-data/what-is-special-category-data/">
+              Special category data
+            </a>
           </li>
         </ul>
       </Text>
@@ -83,7 +82,8 @@ export default () => (
       <Text>
         <p>
           Shapeshifter Productions will use your personal information to deliver
-          the services and support you have requested from us, or in relation to
+          the services and support you have requested from us, in the best
+          possible way, or to ensure it continues to be relevant in relation to
           any collaboration or funding relationship between you, or your
           organisation, and Shapeshifter Productions. This might include:
         </p>

@@ -20,6 +20,12 @@ class CustomPhoneField extends React.Component {
   }
 
   composePhoneNumber(dial_code, phone_line_number) {
+    console.log(
+      `${dial_code || defaultDialCode}${phone_line_number.replace(
+        /[-()\s]/g,
+        ""
+      )}`
+    )
     return `${dial_code || defaultDialCode}${phone_line_number.replace(
       /[-()]/g,
       ""
@@ -30,16 +36,16 @@ class CustomPhoneField extends React.Component {
     const { name, value } = evt.target
     const update = {}
     update[name] = value
-    this.setState({ ...this.state, ...update })
-
-    if (this.props.onChangeText) {
-      this.props.onChangeText(
-        this.composePhoneNumber(
-          this.state.dial_code,
-          this.state.phone_line_number
+    this.setState({ ...this.state, ...update }, () => {
+      if (this.props.onChangeText) {
+        this.props.onChangeText(
+          this.composePhoneNumber(
+            this.state.dial_code,
+            this.state.phone_line_number
+          )
         )
-      )
-    }
+      }
+    })
   }
   render() {
     return (

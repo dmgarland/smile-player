@@ -83,6 +83,13 @@ const Menu = ({ donationUrl }) => {
                   id="main-menu"
                 >
                   <Box display="flex" direction="column" column={12}>
+                    <Link to="/winter-sessions" className="menu-item">
+                      <Text color="darkGray" align="center">
+                        Winter Sessions
+                      </Text>
+                    </Link>
+                    <Divider />
+
                     <Link to="/" className="menu-item">
                       <Text color="darkGray" align="center">
                         Series 2

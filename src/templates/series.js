@@ -19,7 +19,7 @@ const IndexPage = ({ data, location, pageContext }) => {
         location={location.href}
       />
       <Container>
-        <h2>Series {series}</h2>
+        <h2>{series.title}</h2>
         {playlist.map((entry, index) => (
           <VideoContainer key={index} {...entry} />
         ))}

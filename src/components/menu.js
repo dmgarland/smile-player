@@ -83,6 +83,12 @@ const Menu = ({ donationUrl }) => {
                   id="main-menu"
                 >
                   <Box display="flex" direction="column" column={12}>
+                    <Link to="/" className="menu-item">
+                      <Text color="darkGray" align="center">
+                        Series 3
+                      </Text>
+                    </Link>
+                    <Divider />
                     <Link to="/winter-sessions" className="menu-item">
                       <Text color="darkGray" align="center">
                         Winter Sessions
@@ -90,7 +96,7 @@ const Menu = ({ donationUrl }) => {
                     </Link>
                     <Divider />
 
-                    <Link to="/" className="menu-item">
+                    <Link to="/series-2" className="menu-item">
                       <Text color="darkGray" align="center">
                         Series 2
                       </Text>

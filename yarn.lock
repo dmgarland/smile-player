@@ -7454,7 +7454,7 @@ gensync@^1.0.0-beta.1:
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.1.tgz#58f4361ff987e5ff6e1e7a210827aa371eaac269"
   integrity sha512-r8EC6NO1sngH/zdD9fiRDLdcgnbayXah+mLgManTaIZJqEC1MZstmnox8KpnI2/fxQwrp5OpCOYWLp4rBl4Jcg==
 
-gestalt@>=8.2.1:
+gestalt@14.20.0:
   version "14.20.0"
   resolved "https://registry.yarnpkg.com/gestalt/-/gestalt-14.20.0.tgz#57b31a362d92431da4a460fb40379db68d89a096"
   integrity sha512-8vfylCmfCCI/D4h6wrYD0YuSNSjm7+Vx+n056C4fsiBj8H14yOE8tu5Zqh79gM6gHPeZzNyLU8uK4LxnLvng1g==

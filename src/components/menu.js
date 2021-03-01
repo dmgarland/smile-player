@@ -1,5 +1,4 @@
 import { Link, navigate } from "gatsby"
-import InstallBanner from "./install-banner"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import useCurrentSession from "../hooks/use-current-session"
@@ -127,8 +126,6 @@ const Menu = ({ donationUrl }) => {
                 </Flyout>
               )}
             </Box>
-
-            <InstallBanner />
             <Button
               color="gray"
               text="Support Us"

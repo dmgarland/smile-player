@@ -127,7 +127,7 @@ const Menu = ({ donationUrl }) => {
               )}
             </Box>
             <Button
-              color="blue"
+              color="gray"
               text="Support Us"
               iconEnd="heart"
               inline

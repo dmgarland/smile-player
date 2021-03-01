@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import Menu from "./menu"
-import InstallBanner from "./install-banner"
 import { Box, Text, Icon, Modal, Layer, IconButton } from "gestalt"
 import "./layout.css"
 import "gestalt/dist/gestalt.css"
@@ -56,9 +55,9 @@ const Layout = ({ children }) => {
             donationUrl={data.site.siteMetadata.donationUrl}
             setShowAuth={setShowAuth}
           />
+
           <Menu donationUrl={data.site.siteMetadata.donationUrl} />
           <main>
-            <InstallBanner />
             <Box paddingX={3}>{children}</Box>
           </main>
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import Layout from "../components/layout"
-import { Heading, Button, Box, Text, Container } from "gestalt"
+import { Heading, Button, Box, Text, Container, Icon } from "gestalt"
 import { Link, navigate } from "gatsby"
 import SEO from "../components/seo"
 import TwitterLink from "../components/twitter-link"
@@ -62,14 +62,28 @@ export default ({ pageContext, location }) => {
   }, [])
 
   const imagePlaceholder = (
-    <Image
-      cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
-      resourceType="video"
-      publicId={public_id + ".jpg"}
-      innerRef={posterRef}
-      onClick={() => setShowAuth(true)}
-      width="100%"
-    />
+    <div class="placeholder" onClick={() => setShowAuth(true)}>
+      <Image
+        cloudName={process.env.GATSBY_CLOUDINARY_CLOUD_NAME}
+        resourceType="video"
+        publicId={public_id + ".jpg"}
+        innerRef={posterRef}
+        width="100%"
+      />
+
+      <div class="placeholder__inner">
+        <Text color="white" align="center" weight="bold">
+          <p>Please Sign In to play</p>
+          <Icon
+            inline
+            icon="play"
+            size={32}
+            color="white"
+            accessibilityLabel="Sign in to Play"
+          />
+        </Text>
+      </div>
+    </div>
   )
 
   const videoPlayer = <VideoPlayer public_id={public_id} playNext={playNext} />

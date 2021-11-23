@@ -26,7 +26,7 @@ const About = ({ data, location }) => {
             />
             <Text>
               <p>
-                For 10 years, The Smiling Sessions have offered participatory,
+                For 11 years, The Smiling Sessions have offered participatory,
                 high quality singing experiences for senior citizens in care
                 homes and sheltered housing in deprived areas of London, helping
                 them become more integrated and stay healthy and active. Now, in

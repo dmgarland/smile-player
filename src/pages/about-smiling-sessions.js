@@ -46,12 +46,12 @@ const About = ({ data, location }) => {
               <p>
                 The sessions are filmed by our fabulous musicians and celebrity
                 guests as well as care home residents and staff and are created as videos (with on screen lyrics) which we
-                upload to the app every Monday. The videos are building a video
+                upload to the app. The videos are building a video
                 juke box of 15 songs a series that can be used over and over as
                 a download or for streaming.
               </p>
               <p>
-                In the last year we have completed three series. We hope that you will continue to enjoy singing the songs. Knowing how
+                In the last year we have completed three series and we are about to launch a Christmas series in December 2021. We hope that you will continue to enjoy singing the songs. Knowing how
                 singing can really impact on improving health and well-being,
                 while reducing stress, blood pressure and much more, we hope our
                 weekly singalong sessions will also increase the morale of

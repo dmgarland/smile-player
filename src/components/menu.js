@@ -88,6 +88,7 @@ const Menu = ({ donationUrl }) => {
                         Christmas Sessions
                       </Text>
                     </Link>
+                    <Divider />
                     <Link to="/series-3" className="menu-item">
                       <Text color="darkGray" align="center">
                         Series 3

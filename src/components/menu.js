@@ -85,6 +85,11 @@ const Menu = ({ donationUrl }) => {
                   <Box display="flex" direction="column" column={12}>
                     <Link to="/" className="menu-item">
                       <Text color="darkGray" align="center">
+                        Christmas Sessions
+                      </Text>
+                    </Link>
+                    <Link to="/series-3" className="menu-item">
+                      <Text color="darkGray" align="center">
                         Series 3
                       </Text>
                     </Link>

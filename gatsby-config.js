@@ -1,5 +1,5 @@
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
     description: `The Smiling Sessions App provides a mobile video experience that puts a smile on your face`,
     author: `@ShapeshifterE17`,
     donationUrl: "http://www.shapeshifter-productions.com/donate-2/",
-    homepageUrl: "http://www.shapeshifter-productions.com"
+    homepageUrl: "http://www.shapeshifter-productions.com",
   },
   plugins: [
     {
@@ -20,8 +20,8 @@ module.exports = {
         resourceType: `video`,
         context: true,
         tags: true,
-        maxResults: 50
-      }
+        maxResults: 100,
+      },
     },
     {
       resolve: "gatsby-plugin-manifest",
@@ -34,22 +34,22 @@ module.exports = {
         display: "minimal-ui",
         icon: "src/images/sunshine.svg",
         lang: "en",
-        cache_busting_mode: "none"
-      }
+        cache_busting_mode: "none",
+      },
     },
     {
       resolve: "gatsby-plugin-offline",
       options: {
-        appendScript: require.resolve(`./src/custom-sw-code.js`)
-      }
+        appendScript: require.resolve(`./src/custom-sw-code.js`),
+      },
     },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`
-      }
+        path: `${__dirname}/src/images`,
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -57,9 +57,9 @@ module.exports = {
       resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS_ID,
-        anonymize: true
-      }
+        anonymize: true,
+      },
     },
-    `gatsby-plugin-twitter`
-  ]
+    `gatsby-plugin-twitter`,
+  ],
 }

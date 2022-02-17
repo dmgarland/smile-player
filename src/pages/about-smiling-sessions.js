@@ -26,7 +26,7 @@ const About = ({ data, location }) => {
             />
             <Text>
               <p>
-                For 11 years, The Smiling Sessions have offered participatory,
+                Since 2011, The Smiling Sessions have offered participatory,
                 high quality singing experiences for senior citizens in care
                 homes and sheltered housing in deprived areas of London, helping
                 them become more integrated and stay healthy and active. Now, in
@@ -38,7 +38,7 @@ const About = ({ data, location }) => {
 
               <p>
                 The weekly Smiling video sessions is our way of reaching out in
-                a safe, remote way – many residents are completely confined to
+                a safe, remote way – many residents are sometimes confined to
                 one small room 24/7. We want to help keep their spirits up and
                 let them know we’re thinking about them.
               </p>
@@ -46,16 +46,15 @@ const About = ({ data, location }) => {
               <p>
                 The sessions are filmed by our fabulous musicians and celebrity
                 guests as well as care home residents and staff and are created as videos (with on screen lyrics) which we
-                upload to the app. The videos are building a video
-                juke box of 15 songs a series that can be used over and over as
+                upload to the app. The videos have built a digial
+                juke box of video singalongs, series that can be used over and over as
                 a download or for streaming.
               </p>
               <p>
-                In the last year we have completed three series and we are about to launch a Christmas series in December 2021. We hope that you will continue to enjoy singing the songs. Knowing how
+                To date we have created three series of popular songs and a Christmas series. Knowing how
                 singing can really impact on improving health and well-being,
-                while reducing stress, blood pressure and much more, we hope our
-                weekly singalong sessions will also increase the morale of
-                everyone out there who is isolated during these difficult times.
+                while reducing stress, blood pressure and much more, we hope our singalong sessions will also increase the morale of
+                everyone out there and that you will continue to enjoy singing the songs. 
               </p>
               <p>
                 We want to sing, connect and communicate with as many vulnerable
@@ -88,26 +87,26 @@ const About = ({ data, location }) => {
                     </Table.Cell>
                     <Table.Cell>£15</Table.Cell>
                     <Table.Cell>
-                      To care homes and sheltered housing schemes
+                      Connecting to care homes and sheltered housing schemes
                     </Table.Cell>
                   </Table.Row>
 
                   <Table.Row>
                     <Table.Cell>
-                      <Text>Bluetooth Speakers</Text>
+                      <Text>Memory Sticks</Text>
                     </Table.Cell>
-                    <Table.Cell>£20-£30</Table.Cell>
+                    <Table.Cell>£20</Table.Cell>
                     <Table.Cell>
-                      To play the music in the corridors of care homes
+                      4 memory sticks for those without access to wifi
                     </Table.Cell>
                   </Table.Row>
 
                   <Table.Row>
                     <Table.Cell>
-                      <Text>Tablets</Text>
+                      <Text>Songbooks</Text>
                     </Table.Cell>
-                    <Table.Cell>£30-£50</Table.Cell>
-                    <Table.Cell>To play the videos</Table.Cell>
+                    <Table.Cell>£50</Table.Cell>
+                    <Table.Cell>20 songbooks for one care home</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               </Table>

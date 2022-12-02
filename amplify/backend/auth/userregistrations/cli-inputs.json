@@ -24,10 +24,43 @@
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
+      "address",
+      "family_name",
+      "middle_name",
+      "given_name",
+      "name",
+      "phone_number",
+      "updated_at",
       "email"
+    "phone_number",
+    "custom:institution",
+    "custom:address1",
+    "custom:address2",
+    "custom:county",
+    "custom:postcode",
+    "custom:country",
+    "custom:tcs_agreed",
     ],
     "userpoolClientReadAttributes": [
-      "email"
+      "address",
+      "birthdate",
+      "email",
+      "family_name",
+      "middle_name",
+      "gender",
+      "locale",
+      "given_name",
+      "name",
+      "nickname",
+      "phone_number",
+      "preferred_username",
+      "picture",
+      "profile",
+      "updated_at",
+      "website",
+      "zoneinfo",
+      "email_verified",
+      "phone_number_verified"
     ],
     "userpoolClientLambdaRole": "userre2ccde4a9_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
@@ -38,7 +71,7 @@
     "usernameAttributes": [
       "email, phone_number"
     ],
-    "userPoolGroups": true,
+    "userPoolGroups": false,
     "adminQueries": true,
     "triggers": {},
     "hostedUI": false,
@@ -47,6 +80,25 @@
     ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": [],
+    "authProviders": [],
+    "parentStack": {
+      "Ref": "AWS::StackId"
+    },
+    "permissions": []
   }
-} 
+}

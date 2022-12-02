@@ -31,7 +31,7 @@
       "name",
       "phone_number",
       "updated_at",
-      "email"
+      "email",
     "phone_number",
     "custom:institution",
     "custom:address1",

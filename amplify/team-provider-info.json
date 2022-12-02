@@ -1,47 +1,24 @@
 {
   "production": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-smileplayer-production-151223-authRole",
-      "UnauthRoleArn": "arn:aws:iam::101993934634:role/amplify-smileplayer-production-151223-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::101993934634:role/amplify-smileplayer-production-151223-authRole",
+      "AuthRoleName": "amplify-smileplayer-production-192454-authRole",
+      "UnauthRoleArn": "arn:aws:iam::214524420193:role/amplify-smileplayer-production-192454-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::214524420193:role/amplify-smileplayer-production-192454-authRole",
       "Region": "eu-west-2",
-      "DeploymentBucketName": "amplify-smileplayer-production-151223-deployment",
-      "UnauthRoleName": "amplify-smileplayer-production-151223-unauthRole",
-      "StackName": "amplify-smileplayer-production-151223",
-      "StackId": "arn:aws:cloudformation:eu-west-2:101993934634:stack/amplify-smileplayer-production-151223/d02a6af0-1d1d-11eb-91dd-0a58f43a6ffc",
-      "AmplifyAppId": "d2umjl7xxsxk74"
+      "DeploymentBucketName": "amplify-smileplayer-production-192454-deployment",
+      "UnauthRoleName": "amplify-smileplayer-production-192454-unauthRole",
+      "StackName": "amplify-smileplayer-production-192454",
+      "StackId": "arn:aws:cloudformation:eu-west-2:214524420193:stack/amplify-smileplayer-production-192454/0147c9b0-7277-11ed-a09f-061ee3dc1ff0",
+      "AmplifyAppId": "dyxjsnxkxu62l"
     },
     "categories": {
       "auth": {
-        "registrations": {}
+        "userregistrations": {},
+        "userPoolGroups": {}
       },
       "hosting": {
         "amplifyhosting": {
-          "appId": "d2umjl7xxsxk74",
-          "type": "cicd"
-        }
-      }
-    }
-  },
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-smileplayer-dev-222311-authRole",
-      "UnauthRoleArn": "arn:aws:iam::101993934634:role/amplify-smileplayer-dev-222311-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::101993934634:role/amplify-smileplayer-dev-222311-authRole",
-      "Region": "eu-west-2",
-      "DeploymentBucketName": "amplify-smileplayer-dev-222311-deployment",
-      "UnauthRoleName": "amplify-smileplayer-dev-222311-unauthRole",
-      "StackName": "amplify-smileplayer-dev-222311",
-      "StackId": "arn:aws:cloudformation:eu-west-2:101993934634:stack/amplify-smileplayer-dev-222311/5361b700-1eec-11eb-80c0-0a0a1396aa8a",
-      "AmplifyAppId": "d2umjl7xxsxk74"
-    },
-    "categories": {
-      "auth": {
-        "registrations": {}
-      },
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d2umjl7xxsxk74",
+          "appId": "dyxjsnxkxu62l",
           "type": "cicd"
         }
       }

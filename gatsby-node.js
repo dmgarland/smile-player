@@ -37,15 +37,20 @@ module.exports.createPages = async ({ actions, graphql }) => {
     created_at: node.context.custom.created_at,
     week: node.context.custom.week,
     go_live: node.context.custom.go_live,
-    series: node.context.custom.series
+    series: node.context.custom.series,
   })
 
   const allSeries = [
-    { tag: "1", title: "Series 1", path: "series-1"},
+    { tag: "1", title: "Series 1", path: "series-1" },
     { tag: "2", title: "Series 2", path: "series-2" },
     { tag: "winter", title: "Winter Sessions", path: "winter-sessions" },
     { tag: "3", title: "Series 3", path: "series-3" },
-    { tag: "xmas", title: "Christmas Sessions", path: "christmas-sessions", homepage: true }
+    {
+      tag: "xmas",
+      title: "Christmas Sessions",
+      path: "christmas-sessions",
+      homepage: true,
+    },
   ]
   let playlist
 
@@ -53,27 +58,27 @@ module.exports.createPages = async ({ actions, graphql }) => {
     playlist = result.data.allCloudinaryMedia.edges
       .map(transform)
       .filter(node => node.series == series.tag)
-      .sort((a, b) => b.week - a.week)
+      .sort((a, b) => a.week - b.week)
 
     playlist.forEach((item, index) =>
       createPage({
         path: slug(item.public_id),
         component: path.resolve("src/templates/video.js"),
-        context: { ...item, playlist, index, series }
+        context: { ...item, playlist, index, series },
       })
     )
 
     createPage({
       path: series.path,
       component: path.resolve("src/templates/series.js"),
-      context: { playlist, series }
+      context: { playlist, series },
     })
 
     if (series.homepage) {
       createPage({
         path: "/",
         component: path.resolve("src/templates/series.js"),
-        context: { playlist, series: series }
+        context: { playlist, series: series },
       })
     }
   })

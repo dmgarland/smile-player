@@ -41,16 +41,11 @@ module.exports.createPages = async ({ actions, graphql }) => {
   })
 
   const allSeries = [
-    { tag: "1", title: "Series 1", path: "series-1" },
+    { tag: "1", title: "Series 1", path: "series-1", homepage: true },
     { tag: "2", title: "Series 2", path: "series-2" },
-    { tag: "winter", title: "Winter Sessions", path: "winter-sessions" },
     { tag: "3", title: "Series 3", path: "series-3" },
-    {
-      tag: "xmas",
-      title: "Christmas Sessions",
-      path: "christmas-sessions",
-      homepage: true,
-    },
+    { tag: "winter", title: "Winter Sessions", path: "winter-sessions" },
+    { tag: "xmas", title: "Christmas Sessions", path: "christmas-sessions" },
   ]
   let playlist
 

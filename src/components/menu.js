@@ -12,7 +12,7 @@ import {
   Container,
   Sticky,
   Divider,
-  Icon
+  Icon,
 } from "gestalt"
 
 const Menu = ({ donationUrl }) => {
@@ -68,7 +68,7 @@ const Menu = ({ donationUrl }) => {
                   if (window.gtag) {
                     window.gtag("event", "Click", {
                       event_category: "Heart Button",
-                      event_label: `${action} Donation Flyout`
+                      event_label: `${action} Donation Flyout`,
                     })
                   }
                 }}
@@ -83,9 +83,15 @@ const Menu = ({ donationUrl }) => {
                   id="main-menu"
                 >
                   <Box display="flex" direction="column" column={12}>
-                    <Link to="/" className="menu-item">
+                    <Link to="/series-1" className="menu-item">
                       <Text color="darkGray" align="center">
-                        Christmas Sessions
+                        Series 1
+                      </Text>
+                    </Link>
+                    <Divider />
+                    <Link to="/series-2" className="menu-item">
+                      <Text color="darkGray" align="center">
+                        Series 2
                       </Text>
                     </Link>
                     <Divider />
@@ -101,19 +107,13 @@ const Menu = ({ donationUrl }) => {
                       </Text>
                     </Link>
                     <Divider />
+                    <Link to="/" className="menu-item">
+                      <Text color="darkGray" align="center">
+                        Christmas Sessions
+                      </Text>
+                    </Link>
+                    <Divider />
 
-                    <Link to="/series-2" className="menu-item">
-                      <Text color="darkGray" align="center">
-                        Series 2
-                      </Text>
-                    </Link>
-                    <Divider />
-                    <Link to="/series-1" className="menu-item">
-                      <Text color="darkGray" align="center">
-                        Series 1
-                      </Text>
-                    </Link>
-                    <Divider />
                     <Link to="/privacy" className="menu-item">
                       <Text color="darkGray" align="center">
                         Privacy Policy
@@ -148,6 +148,6 @@ const Menu = ({ donationUrl }) => {
 }
 
 Menu.propTypes = {
-  donationUrl: PropTypes.string
+  donationUrl: PropTypes.string,
 }
 export default Menu
